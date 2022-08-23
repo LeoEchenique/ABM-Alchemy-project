@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 
 conn.sync({ force: true }).then(async () => {
     try {
-        const wallet = await Wallet.create()
+        const wallet = await Wallet.create({ Balance: 100 })
     } catch (error) {
         console.log(error.message)
     }

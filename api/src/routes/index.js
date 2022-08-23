@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { Wallet, Operation } = require("../db.js");
+const { Calculator } = require("../Calculate_Balance/Calculator.js")
 // Import all Controllers;
 // Like const authRouter = require('./auth.js');
 const router = Router();
@@ -36,22 +37,21 @@ router.post("/Operations", async (req, res) => {
         const operation = await Operation.create({
             Reason,
             Mount,
-            Type,
-        })
-
-
-        const relation = await operation.setWallet(Fk_wallet)
-
-        if (Type === "Income") {
-
-            const wal = await Wallet.findByPk(Fk_wallet)
-            wal.Balance = parseInt(wal.Balance) + parseInt(Mount)
-            await wal.save();
-            return res.status(201).send(wal);
-        }
-        res.status(201).send(operation);
+            Type
+        });
+        await operation.setWallet(Fk_wallet);
+        const wallet = await Wallet.findByPk(Fk_wallet);
+        const balance = wallet.dataValues.Balance;
+        const newBalance = Calculator(Type, Mount, balance);
+        if (newBalance === "Denied") throw new Error("Not enough funds to realize the operation.");
+        wallet.Balance = newBalance;
+        await wallet.save();
+        res.status(202).send({
+            operation,
+            newBalance
+        });
     } catch (error) {
-        res.status(402).send(error.message)
+        res.status(402).send(error.message);
     }
 
 })
