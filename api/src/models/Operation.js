@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true,
             primaryKey: true,
+            unique: true,
             autoIncrement: true
         },
         Reason: {
