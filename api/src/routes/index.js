@@ -43,10 +43,10 @@ router.post("/Operations", async (req, res) => {
 router.get("/Operations", async (req, res) => {
 
     let operations = await Operation.findAll()
-
-    let sort = operations.sort((a, b) => (a.Date) > (b.Date));
-
-    res.status(200).send(sort)
+    res.status(200).send(operations)
+    /* this will send All the operations to the front and from there will sort for the first ten 
+        so that in case we wanna see all the operations can be possible by just taking the sort ecuation out.    
+    */
 })
 
 
