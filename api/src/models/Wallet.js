@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        Balance: {
+        Funds: {
             type: DataTypes.INTEGER,
             defaultValue: 0
         },

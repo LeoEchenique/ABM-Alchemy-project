@@ -26,6 +26,17 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM("Income", "Expense"),
             allowNull: false
         },
+        Balance: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        Date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            get: function () {
+                return this.getDataValue('Date').toLocaleString('en-GB', { timeZone: 'UTC' });
+            }
+        }
 
-    })
+    }, { timestamps: false })
 }
