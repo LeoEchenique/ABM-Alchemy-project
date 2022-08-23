@@ -33,9 +33,12 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 
 // relational models
-const { Wallet } = sequelize.models;     /* HERE THE MODELS TO INJECT THE CONECTION */
+const { Wallet, Operation } = sequelize.models;     /* HERE THE MODELS TO INJECT THE CONECTION */
 
 
+
+Wallet.hasMany(Operation);
+Operation.belongsTo(Wallet);
 
 module.exports = {
     ...sequelize.models,

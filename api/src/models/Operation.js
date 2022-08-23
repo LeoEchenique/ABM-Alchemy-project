@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
 
 
-    sequelize.define("Wallet", {
+    sequelize.define("Operation", {
 
         Id: {
             type: DataTypes.INTEGER(),
@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
         },
         Type: {
             type: DataTypes.ENUM("Income", "Expense"),
-            defaultValue: false
+            allowNull: false
         },
 
     })
