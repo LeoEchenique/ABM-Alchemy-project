@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const { Wallet, Operation } = require("../db.js");
 const { Calculator } = require("../Calculate_Balance/Calculator.js")
-const { Op } = require("sequelize")
 // Import all Controllers;
 // Like const authRouter = require('./auth.js');
 const router = Router();
@@ -47,9 +46,9 @@ router.get("/Operations/Latest", async (req, res) => {
             limit: 10,
             order: [["Date", "DESC"]]
         })
-        res.status(200).send(operations)
+        res.status(200).send(operations);
     } catch (error) {
-        res.status(404).send(error.message)
+        res.status(404).send(error.message);
     }
 
 
@@ -63,9 +62,9 @@ router.get("/Operations/All", async (req, res) => {
         let operations = await Operation.findAll({
             order: [["Date", "DESC"]]
         });
-        res.status(200).send(operations)
+        res.status(200).send(operations);
     } catch (error) {
-        res.status(404).send(error.message)
+        res.status(404).send(error.message);
     }
 })
 
@@ -75,7 +74,7 @@ router.get("/Operations/All", async (req, res) => {
 
 router.put("/Operations/UpDate", async (req, res) => {
 
-    let { reason, mount, referral_id } = req.body;
+    let { reason, mount, id } = req.body;
 
     let newDate = new Date();
 
@@ -84,7 +83,7 @@ router.put("/Operations/UpDate", async (req, res) => {
     try {
         /* for safety purposes it should be found by date and not by id, 
         but the detail of the operation will include a referral ID of the operation (which will be the same ID stored on the DB) */
-        let operation = await Operation.findByPk(referral_id)
+        let operation = await Operation.findByPk(id);
         if (operation) {
             let wallet = await Wallet.findByPk(operation.WalletId);
             let newBalance = Calculator(operation.Type, mount, wallet.Funds);
@@ -94,15 +93,27 @@ router.put("/Operations/UpDate", async (req, res) => {
             operation.Balance = newBalance;
             await operation.save();
             wallet.Funds = newBalance;
-            await wallet.save()
-
-
+            await wallet.save();
         }
-        res.status(200).send(operation)
+        res.status(200).send(operation);
     } catch (error) {
-        res.status(404).send(error.message)
+        res.status(404).send(error.message);
     }
 
+})
+
+
+
+router.delete("/Operations/Delete/:id", async (req, res) => {
+
+    let { id } = req.params;
+    try {
+        let operation = await Operation.findByPk(id);
+        operation.destroy();
+        res.status(200).send("Delete successful");
+    } catch (error) {
+        res.status(404).send(id);
+    }
 })
 
 
