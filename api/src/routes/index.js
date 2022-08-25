@@ -9,7 +9,7 @@ const router = Router();
 
 
 
-router.post("/Operations", async (req, res) => {
+router.post("/Operations/New", async (req, res) => {
 
     const { Reason, Mount, Type, Fk_wallet } = req.body;
 
@@ -19,7 +19,6 @@ router.post("/Operations", async (req, res) => {
         const newBalance = Calculator(Type, Mount, balance);
         if (newBalance === "Denied") throw new Error("Not enough funds to realize the operation.");
         const date = new Date();
-
         const operation = await Operation.create({
             Reason,
             Mount,
@@ -40,14 +39,40 @@ router.post("/Operations", async (req, res) => {
 })
 
 
-router.get("/Operations", async (req, res) => {
+router.get("/Operations/Latest", async (req, res) => {
 
-    let operations = await Operation.findAll()
-    res.status(200).send(operations)
-    /* this will send All the operations to the front and from there will sort for the first ten 
-        so that in case we wanna see all the operations can be possible by just taking the sort ecuation out.    
-    */
+    try {
+        let operations = await Operation.findAll({
+            limit: 10,
+            order: [["Date", "DESC"]]
+        })
+        res.status(200).send(operations)
+    } catch (error) {
+        res.status(404).send(error.message)
+    }
+
+
 })
+
+
+router.get("/Operations/All", async (req, res) => {
+
+
+    try {
+        let operations = await Operation.findAll({
+            order: [["Date", "DESC"]]
+        });
+        res.status(200).send(operations)
+    } catch (error) {
+        res.status(404).send(error.message)
+    }
+})
+
+
+
+
+
+
 
 
 
