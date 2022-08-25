@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { Wallet, Operation } = require("../db.js");
 const { Calculator } = require("../Calculate_Balance/Calculator.js")
+const { Op } = require("sequelize")
 // Import all Controllers;
 // Like const authRouter = require('./auth.js');
 const router = Router();
@@ -72,7 +73,37 @@ router.get("/Operations/All", async (req, res) => {
 
 
 
+router.put("/Operations/UpDate", async (req, res) => {
 
+    let { reason, mount, referral_id } = req.body;
+
+    let newDate = new Date();
+
+
+
+    try {
+        /* for safety purposes it should be found by date and not by id, 
+        but the detail of the operation will include a referral ID of the operation (which will be the same ID stored on the DB) */
+        let operation = await Operation.findByPk(referral_id)
+        if (operation) {
+            let wallet = await Wallet.findByPk(operation.WalletId);
+            let newBalance = Calculator(operation.Type, mount, wallet.Funds);
+            operation.Reason = reason;
+            operation.Mount = mount;
+            operation.Date = newDate;
+            operation.Balance = newBalance;
+            await operation.save();
+            wallet.Funds = newBalance;
+            await wallet.save()
+
+
+        }
+        res.status(200).send(operation)
+    } catch (error) {
+        res.status(404).send(error.message)
+    }
+
+})
 
 
 
