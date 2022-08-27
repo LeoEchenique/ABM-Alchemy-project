@@ -3,17 +3,16 @@
     height: 100vh;
     display: flex;
  /*  outline: 2px solid red; */
-  background: #003566;
-  color:#ffc300;
+/*   background: #f8f9fa; */
+  color: black;
 }
 
 .home_content_container{
-
-  /*   outline: 2px solid violet; */
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .wallet{
@@ -21,16 +20,28 @@
     height: 45%;
     width: 45%;
 }
-.last_operation{
-   /*  outline: 2px solid black;  */
+.last_operation{  
     height: 45%;
-    width: 55%;
+    width: 45%;
+    color: black;
+    border: 6px solid #f8f9fa;
+    background-color: #f8f9fa;
+    border-radius: 8%;
+    box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+    -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+    -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
 }
 
 .last_ten_operations{
-    /* outline: 2px solid green; */
-    height: 55%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    
+    height: 40%;
+    width: 80%;
+     color: black;
+    border: 1px solid #f8f9fa;
+    background-color: #f8f9fa;
+    border-radius: 5%;
+    box-shadow: -2px 1px 10px 9px rgba(142,154,175,0.87);
+    -webkit-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
+    -moz-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
+    padding: 40px;
 }

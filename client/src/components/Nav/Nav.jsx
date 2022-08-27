@@ -1,8 +1,8 @@
 import React from "react";
 import style from "../Nav/nav.module.css"
 import { Link } from "react-router-dom";
-import icon_dashboard from "../../components/icon_dashboard.png"
-import icon_operation from "../../components/icon_operation.png"
+import icon_dashboard from "../icons/icon_dashboard.png"
+import icon_operation from "../icons/icon_operationNav.png"
 export default function Nav() {
     
     return (
@@ -14,7 +14,7 @@ export default function Nav() {
             </ul>
             <div className={style.nav_links}>
                 <Link to="/Home"><img src={icon_dashboard} alt=""/> Dashboard </Link>
-                <Link to="/Home/Operations/NewOperation"> <img src={icon_operation} alt="" /> Submit an operation </Link>
+                <Link to="/Home/Operations/All"> <img src={icon_operation} alt="" /> All operations </Link>
             </div>
         </div>
     )

@@ -1,8 +1,13 @@
 .nav_container{
- /*    outline: 2px solid blue; */
+
 /*  */
-background: #000814;     
-width: 13%;
+
+background: #0b090a;     
+width: 15%;
+height: 100vh;
+color: white;
+border-radius: 4%;
+padding: 20px;
 }
 
 .ul_nav{
@@ -17,7 +22,7 @@ width: 13%;
 }
 
 .nav_links{
-    outline: 2px solid red;
+/*     outline: 2px solid red; */
     height: 20%;
     display: flex;
     flex-direction: column;

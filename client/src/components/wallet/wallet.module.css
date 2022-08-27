@@ -1,0 +1,52 @@
+.div_container{
+ 
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    border: 6px solid #f8f9fa;
+    background-color: #f8f9fa;
+    border-radius: 8%;
+    /* margin:20px; */
+    box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+-webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+-moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+}
+
+.card_wallet{
+    height: 60%;
+    width: 60%;
+    background: rgb(60,120,178);
+    background: linear-gradient(90deg, rgb(40, 90, 137) 5%, rgb(8, 41, 72)90%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
+-webkit-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
+-moz-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
+opacity: 0.8;
+}
+
+.div_container :hover{
+
+opacity: 0.8;
+transition: 1s;
+}
+
+.head_wallet{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.current_balance{
+    margin:auto;
+    font-size: 54px;
+    margin-top: 30px;
+}
+.card_number{
+    margin-left: 15px;
+}

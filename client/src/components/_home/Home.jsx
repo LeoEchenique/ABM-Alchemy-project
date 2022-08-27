@@ -1,6 +1,10 @@
 import React from "react";
 import style from "../_home/home.module.css"
 import Nav from "../Nav/Nav"
+import Wallet from "../wallet/Wallet";
+import LastOperation from "../Last_operation/Last_operation";
+import LatestOperations from "../Latest_operation/Latest_operations";
+
 
 export default function Home() {
     
@@ -9,13 +13,13 @@ export default function Home() {
             <Nav />
             <div className={style.home_content_container}>
                 <div className={style.wallet}>
-                  <h1>Your wallet</h1>
+                  <Wallet />
                 </div>
                 <div className={style.last_operation}>
-                    <h1>Last operation</h1>
+                    <LastOperation />
                </div>
                 <div className={style.last_ten_operations}>
-                    <h1>Last ten operations</h1>
+                    <LatestOperations />
                 </div>
             </div>
       
