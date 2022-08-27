@@ -1,0 +1,34 @@
+.div_container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+  outline: 2px solid red;
+}
+
+.home_content_container{
+
+    outline: 2px solid violet;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wallet{
+     outline: 2px solid red;
+    height: 45%;
+    width: 45%;
+}
+.last_operation{
+    outline: 2px solid black; 
+    height: 45%;
+    width: 55%;
+}
+
+.last_ten_operations{
+    outline: 2px solid green;
+    height: 55%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
