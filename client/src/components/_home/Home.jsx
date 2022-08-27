@@ -18,6 +18,7 @@ export default function Home() {
                     <h1>Last ten operations</h1>
                 </div>
             </div>
+      
         </div>
     )
 }
