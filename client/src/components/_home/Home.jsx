@@ -7,13 +7,13 @@ import LatestOperations from "../Latest_operation/Latest_operations";
 
 
 export default function Home() {
-    
+
     return (
         <div className={style.div_container}>
             <Nav />
             <div className={style.home_content_container}>
                 <div className={style.wallet}>
-                  <Wallet />
+                    <Wallet  />
                 </div>
                 <div className={style.last_operation}>
                     <LastOperation />

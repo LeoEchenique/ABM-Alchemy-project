@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./wallet.module.css"
-import icon_verify from "../icons/icon_verify.png"
+import icon_update from "../icons/icon_update.png"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -26,7 +26,7 @@ export default function Wallet() {
             <div className={style.card_wallet}>
                 <div className={style.head_wallet}>
                     <h2>Wallet balance</h2>
-                    <img className={style.icon_verify} src={icon_verify} alt=""/>
+                    <img className={style.icon_verify} src={icon_update} onClick={getWallet} alt=""/>
                 </div>
                 {wallet?.length ? 
                     wallet.map(wallet=>  <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>)
