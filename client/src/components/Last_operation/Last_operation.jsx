@@ -25,7 +25,7 @@ export default function Last_operation() {
             {operation ?
             <div className={style.operation}>
                 <img src={icon} alt="" />
-                <h3>{operation.Reason}</h3>
+                <h3 className={style.reason}>{operation.Reason}</h3>
                 <h3>{operation.Type}</h3>
                 <h3>{operation.Date}</h3>
                 {operation.Type === "Income" ?  <h3> + $ {operation.Mount}</h3> : <h3> - $ {operation.Mount}</h3>}

@@ -101,14 +101,10 @@ router.delete("/Delete/:id", async (req, res) => {
     let { id } = req.params;
     try {
         let operation = await Operation.findByPk(id);
-        console.log(operation.dataValues)
-        let wallet = await Wallet.findByPk(operation.dataValues.WalletId)
-        wallet.Funds = wallet.Funds - operation.Mount;
-        await wallet.save()
-        operation.destroy();
+        await operation.destroy();
         res.status(200).send("Delete successful");
     } catch (error) {
-        res.status(404).send(id);
+        res.status(403).send(error.message);
     }
 })
 

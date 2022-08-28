@@ -5,17 +5,30 @@
     height: 100%;
     width: 100%;
     overflow-x:auto;
+    overflow-x: hidden;
 }
 .operation{
 
     display: flex;
    align-items: center;
-   justify-content: space-between;
-    width: 90%;
+   justify-content: space-evenly;
+    width: 100%;
     padding: 20px;
+    outline: 2px solid red;
 }
 .icons{
     display: flex;
     width: 10%;
     justify-content: space-between;
+}
+
+.div_container h3{
+
+    margin: 40px;
+    color: blue;
+}
+.reason{
+    outline: 2px solid green;
+    width: 300px;
+    text-align: center;
 }

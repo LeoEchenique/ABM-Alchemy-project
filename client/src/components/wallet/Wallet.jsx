@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-export default function Wallet() {
+export default function Wallet({balance}) {
 
+    console.log(balance, "BALANCE WALLET")
     const [wallet,setWallet]=useState([]) 
-
+    
     const getWallet = async ()=>{
         let wallet = await axios.get("http://localhost:3001/Wallet")
         setWallet(wallet.data)
@@ -28,11 +29,12 @@ export default function Wallet() {
                     <h2>Wallet balance</h2>
                     <img className={style.icon_verify} src={icon_update} onClick={getWallet} alt=""/>
                 </div>
-                {wallet?.length ? 
-                    wallet.map(wallet=>  <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>)
+
+                {balance ? balance.map(b => <h1 key={b.Id} className={style.current_balance} >${b.Funds} </h1>)
+                    : wallet?.length ? 
+                     wallet.map(wallet=>  <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>)
                     
                 : null}
-              
                 <h3 className={style.card_number}> **** **** **** ****</h3>
             </div>
 
