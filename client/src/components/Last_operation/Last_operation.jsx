@@ -18,7 +18,7 @@ export default function Last_operation() {
         getOperation()
       },[])
 
-    console.log(operation, "here operation");
+
     return (
         <div className={style.div_container}>
             <h1>Last operation</h1>

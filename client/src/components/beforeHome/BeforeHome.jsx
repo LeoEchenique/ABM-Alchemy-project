@@ -8,7 +8,7 @@ export default function BeforeHome() {
         <div className={style.div_container}>
             <div>
                 <h1>Hello world</h1>
-                <Link to="/home">Get started</Link >
+                <Link to="/Home">Get started</Link >
             </div>
            
         </div>

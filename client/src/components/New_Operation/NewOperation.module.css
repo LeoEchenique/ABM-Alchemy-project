@@ -1,0 +1,40 @@
+.div_container{
+    outline: 2px solid red;
+    display: flex;
+}
+
+.form_box{
+    outline: 2px solid red;
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+    margin: 2%;
+    color: black;
+    border: 6px solid #f8f9fa;
+    background-color: #f8f9fa;
+    border-radius: 8%;
+    box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+    -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+    -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+}
+
+.container_form{
+    outline: 2px solid green;
+    width: 70%;
+    height: 50%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form{
+    outline: 2px solid violet;
+    height: 100%;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}

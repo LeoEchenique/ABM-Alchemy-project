@@ -8,13 +8,14 @@ const router = Router();
 router.post("/New", async (req, res) => {
 
     const { Reason, Mount, Type, Fk_wallet } = req.body;
-
     try {
         const wallet = await Wallet.findByPk(Fk_wallet);
         const balance = wallet.dataValues.Funds;
+        console.log(balance)
         const newBalance = Calculator(Type, Mount, balance);
         if (newBalance === "Denied") throw new Error("Not enough funds to realize the operation.");
         const date = new Date();
+        console.log(newBalance)
         const operation = await Operation.create({
             Reason,
             Mount,

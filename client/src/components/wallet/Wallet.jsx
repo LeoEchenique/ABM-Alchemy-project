@@ -1,13 +1,12 @@
 import React from "react";
 import style from "./wallet.module.css"
-import icon_update from "../icons/icon_update.png"
+import icon_update from "../icons/icon_verify.png"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 
 export default function Wallet({balance}) {
 
-    console.log(balance, "BALANCE WALLET")
     const [wallet,setWallet]=useState([]) 
     
     const getWallet = async ()=>{
@@ -19,7 +18,6 @@ export default function Wallet({balance}) {
       getWallet()
     },[])
 
-    console.log(wallet, "here")
     return (
         <div className={style.div_container}>
             <h1>Your wallet</h1>
@@ -27,7 +25,7 @@ export default function Wallet({balance}) {
             <div className={style.card_wallet}>
                 <div className={style.head_wallet}>
                     <h2>Wallet balance</h2>
-                    <img className={style.icon_verify} src={icon_update} onClick={getWallet} alt=""/>
+                    <img className={style.icon_verify} src={icon_update} alt=""/>
                 </div>
 
                 {balance ? balance.map(b => <h1 key={b.Id} className={style.current_balance} >${b.Funds} </h1>)
