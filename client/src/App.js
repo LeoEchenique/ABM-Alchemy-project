@@ -13,7 +13,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<BeforeHome />} />
         <Route exact path="/Home" element={<Home />} />
-        <Route exact path="/Home/Operations/NewOperation" element={<NewOperation />} />
+        <Route exact path="/Home/Operations/NewOperation/" element={<NewOperation />} />
+        <Route exact path="/Home/Operations/NewOperation/:id" element={<NewOperation />} />
       </Routes>
     </div>
   );

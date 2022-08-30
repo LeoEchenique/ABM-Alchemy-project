@@ -51,6 +51,17 @@ router.get("/Latest", async (req, res) => {
 
 })
 
+router.get("/Operation/:id", async (req, res) => {
+    let { id } = req.params;
+
+    try {
+        let operation = await Operation.findByPk(id);
+        res.status(200).send(operation)
+    } catch (error) {
+        res.status(404).send(error.message)
+    }
+
+})
 
 router.get("/All", async (req, res) => {
 

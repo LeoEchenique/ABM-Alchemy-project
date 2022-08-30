@@ -31,7 +31,7 @@ export default function Last_operation() {
                 {operation.Type === "Income" ?  <h3> + $ {operation.Mount}</h3> : <h3> - $ {operation.Mount}</h3>}
             </div>
             : <h1>You don't have any operations yet, make one!</h1>}
-            <Link className={style.button_operation} to="/Home/Operations/NewOperation">  Submit an operation </Link>
+            <Link className={style.button_operation} to="/Home/Operations/NewOperation/">  Submit an operation </Link>   {/* mandar ID por params / hacer el get operation por el id para precargar los datos al formulario */}
 
       
             
