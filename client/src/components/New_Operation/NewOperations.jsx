@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 
 export default function NewOperation() {
   /* this will recieve the entire operation to display in the form in case of an update */
-
   let { id } = useParams();
   const [updateOp, setUpdateOp] = useState(null);
   const [form, setForm] = useState({
@@ -17,6 +16,10 @@ export default function NewOperation() {
     Type: "Select",
     Fk_wallet: 1,
   });
+
+
+  
+  
   const getOp = async () => {
     if (id) {
       let operation = await axios.get(`http://localhost:3001/Operations/${id}`);
@@ -29,6 +32,7 @@ export default function NewOperation() {
 
   const handleChange = (e) => {
     if (e.target.id === "Select") {
+      e.target.opacity=0
       e.target[0].disabled = true;
     }
     setForm((values) => ({ ...values, [e.target.name]: e.target.value }));
@@ -44,15 +48,13 @@ export default function NewOperation() {
         .catch((res) => alert(res.response.data));
       return;
     }
-    await axios.post("http://localhost:3001/Operations/New", form);
+    await axios.post("http://localhost:3001/Operations/New", form)
+    .then(()=> alert("Operation created!"))
   };
 
   return (
-    /*  reason, mount, type, date : TO CREATE */
-    /* default values on UPDATE:  reason(TBC)  type  date(TBC) Mount(TBC) */
     <div className={style.div_container}>
       <Nav />
-
       {updateOp !== null ? (
         <form
           className={style.form_box}
@@ -69,7 +71,6 @@ export default function NewOperation() {
               name="Reason"
               id="Reason"
             />
-            {/* With an onChange gonna set the state to catch (if needed) the updated value */}
             <label htmlFor="Type">Operation type:</label>
             <select name="type">
               <option defaultValue={updateOp.Type}>{updateOp.Type}</option>
@@ -87,28 +88,40 @@ export default function NewOperation() {
           <h2>Make a new operation</h2>
           <div className={style.container_form}>
             <div className={style.form}>
-              <label htmlFor="Reason">Reason:</label>
-              <input
-                type="text"
-                placeholder="Reason..."
-                id="reason"
-                name="Reason"
-              />
-
-              <label htmlFor="Type">Operation type:</label>
-              <select id="Select" name="Type" onClick={(e) => handleChange(e)}>
-                <option>Type</option>
-                <option>Income</option>
-                <option>Expense</option>
-              </select>
-              <label htmlFor="Mount">Amount:</label>
-              <input
-                type="number"
-                placeholder="Amount"
-                id="Amount"
-                name="Mount"
-              />
-              <input type="submit" value="Submit your operation" />
+                <label htmlFor="Reason" className={style.form__label}>
+                Reason:   </label>
+                <input
+                  className={style.form_field}
+                  type="text"
+                  placeholder="Reason..."
+                  id="reason"
+                  name="Reason"
+                />
+             
+              <label htmlFor="Type">  </label>
+                Operation type:
+                <select
+                  id="Select"
+                  name="Type"
+                  className={`${style.form_field} ${style.Select}`}
+                  onClick={(e) => handleChange(e)}
+                >
+                  <option className={style.option}>Type</option>
+                  <option className={style.option}>Income</option>
+                  <option className={style.option}>Expense</option>
+                </select>
+            
+              <label htmlFor="Mount">
+                Amount:     </label>
+                <input
+                  className={style.form_field}
+                  type="number"
+                  placeholder="Amount"
+                  id="Amount"
+                  name="Mount"
+                />
+         
+                <input type="submit" value="Submit your operation" className={style.submit} /> 
             </div>
           </div>
         </form>
