@@ -3,7 +3,7 @@ import { Routes, Route, } from 'react-router-dom';
 import BeforeHome from "./components/beforeHome/BeforeHome.jsx";
 import Home from "./components/_home/Home.jsx"
 import NewOperation from "./components/New_Operation/NewOperations.jsx";
-import Nav from "./components/Nav/Nav.jsx";
+/* import Nav from "./components/Nav/Nav.jsx"; */
 import style from "./App.module.css"
 
 

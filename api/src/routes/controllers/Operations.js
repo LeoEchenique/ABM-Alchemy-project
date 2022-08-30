@@ -51,9 +51,9 @@ router.get("/Latest", async (req, res) => {
 
 })
 
-router.get("/Operation/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     let { id } = req.params;
-
+    console.log(id)
     try {
         let operation = await Operation.findByPk(id);
         res.status(200).send(operation)
@@ -80,20 +80,21 @@ router.get("/All", async (req, res) => {
 
 
 
-router.put("/UpDate", async (req, res) => {
+router.put("/UpDate/:id", async (req, res) => {
 
-    let { reason, mount, id } = req.body;
+    let { Reason, Mount } = req.body;
+
+    let { id } = req.params;
     let newDate = new Date();
     try {
-        /* for safety purposes it should be found by date and not by id, 
-        but the detail of the operation will include a referral ID of the operation (which will be the same ID stored on the DB) */
         let operation = await Operation.findByPk(id);
         if (operation !== null) {
             let wallet = await Wallet.findByPk(operation.WalletId);
-            let newBalance = Calculator(operation.Type, (mount - operation.Mount), wallet.Funds);
-            operation.Reason = reason;
-            operation.Mount = mount;
+            let newBalance = Calculator(operation.Type, (Mount - operation.Mount), wallet.Funds);
+            operation.Reason = Reason.length ? Reason : operation.Reason;
+            operation.Mount = Mount.length ? Mount : operation.Mount;
             operation.Date = newDate;
+            if (newBalance === "Denied") throw new Error("Not enough funds to realize the operation.");
             operation.Balance = newBalance;
             await operation.save();
             wallet.Funds = newBalance;
