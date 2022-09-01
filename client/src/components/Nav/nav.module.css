@@ -1,5 +1,5 @@
 .nav_container{
-background: #0b090a;     
+background: 	#0e1111;     
 min-width: 12.2%;
 max-width: 12.2%;
 height: 100vh;
@@ -16,7 +16,9 @@ padding: 20px;
     align-items: flex-start;
     justify-content: space-between;
     padding-left: 0px;
-    
+    outline: 2px solid white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:  300;
 }
 
 .nav_links{
@@ -28,4 +30,16 @@ padding: 20px;
     justify-content: space-between;
     padding-top: 20px;
 
+}
+
+.a{
+/*     outline: 2px solid white; */
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin:2px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:  300;
 }

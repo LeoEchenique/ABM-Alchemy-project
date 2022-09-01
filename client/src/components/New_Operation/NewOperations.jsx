@@ -61,22 +61,26 @@ export default function NewOperation() {
           onChange={(e) => handleChange(e)}
           onSubmit={handleSubmit}
         >
-          <h2>Make a new operation</h2>
+          <h2 className={style.H2}>Make a new operation</h2>
           <div className={style.container_form}>
-            <label htmlFor="Reason">Reason:</label>
+            <div className={style.form}>
+            <label htmlFor="Reason" className={style.form__label}>Reason:</label>
             <input
               type="text"
               placeholder={updateOp.Reason}
               defaultValue={updateOp.Reason}
+              className={style.form_field}
               name="Reason"
               id="Reason"
             />
-            <label htmlFor="Type">Operation type:</label>
-            <select name="type">
+            <label htmlFor="Type" className={style.form__label}>Operation type:</label>
+            <select name="type"  className={`${style.form_field} ${style.Select}`}>
               <option defaultValue={updateOp.Type}>{updateOp.Type}</option>
             </select>
-            <input type="number" placeholder={updateOp.Mount} name="Mount" />
-            <input type="submit" value="Update your operation" />
+            <input type="number" placeholder={updateOp.Mount} name="Mount"   className={style.form_field}/>
+            <input type="submit" value="Update your operation" className={style.submit}/>
+            </div>
+      
           </div>
         </form>
       ) : (
@@ -85,7 +89,7 @@ export default function NewOperation() {
           onChange={(e) => handleChange(e)}
           onSubmit={handleSubmit}
         >
-          <h2>Make a new operation</h2>
+          <h2 className={style.H2}>Make a new operation</h2>
           <div className={style.container_form}>
             <div className={style.form}>
                 <label htmlFor="Reason" className={style.form__label}>
@@ -98,8 +102,8 @@ export default function NewOperation() {
                   name="Reason"
                 />
              
-              <label htmlFor="Type">  </label>
-                Operation type:
+              <label htmlFor="Type"> 
+                Operation type:  </label> 
                 <select
                   id="Select"
                   name="Type"

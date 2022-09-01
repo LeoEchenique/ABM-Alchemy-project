@@ -1,21 +1,21 @@
 .div_container{
-    outline: 2px solid red;
     display: flex;
 }
 
 .form_box{
-    outline: 2px solid red;
+    
     width: 100%;
     text-align: center;
     padding-top: 50px;
     margin: 2%;
     color: black;
-    border: 6px solid #f8f9fa;
+    border: 2px solid #f8f9fa;
     background-color: #f8f9fa;
     border-radius: 8%;
     box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+    background-image: url("http://res.cloudinary.com/leo-echenique/image/upload/v1661872776/dzbo3dauoepqaoas2wrt.jpg");
 }
 
 .container_form{
@@ -28,6 +28,18 @@
     border-radius: 40% 2% 40% 2%;
     background: linear-gradient(90deg, rgb(40, 90, 137) 5%, rgb(8, 41, 72)90%);
     opacity: 0.9;
+    
+}
+.container_form label {
+    color:white;
+    text-shadow: 11px 11px 20px black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:  300;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 20px;
+    
 }
 .form{
    /*  outline: 2px solid violet; */
@@ -51,40 +63,50 @@
     color:white;
     background: transparent;
     transition: border-color 0.2s;
-    opacity: 0.8;
+    opacity:1;
     font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:  300;
 }
-.form_field:focus{
-    opacity: 1;
+.H2{
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding-bottom: -12px;
+    text-shadow: 8px 4px 5px rgb(50, 50, 50);
+    
 }
-.form_field:focus {
-    color: white(0, 23, 228);
-    transition: 1s;
-  }
 
 .submit{
     border: 0;
     border-radius: 24px;
     width: 60%;
     color:  rgb(17, 79, 137);
-    font-family: inherit;
-    font-weight: 700;
     font-size: 18px;
     padding: 16px;
-    box-shadow:  2px 12px 12px rgba(21, 75, 38, 0.507);
+    box-shadow:  2px 4px 12px rgba(184, 184, 185, 0.507);
+    font-family: 'Montserrat', sans-serif;
+    font-weight:  700;
+    padding-right: 100px;
 }
-
+.submit:hover{
+    background: rgb(153, 156, 149);
+    color:rgb(17, 79, 137);
+    outline: 2px solid rgb(28, 0, 119);
+    transition: 1s;
+}
 .Select {
     background: linear-gradient(90deg, rgb(40, 90, 137) 5%, rgb(8, 41, 72)90%);;
     opacity: 0.8;
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+font-weight:  300;
 }
 
 .Select:focus{
     opacity: 1;
 }
 .option{
-    
     background-color:rgb(40, 90, 137); 
     color:white;
     max-width: 20px;

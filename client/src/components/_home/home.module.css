@@ -12,21 +12,23 @@
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .wallet{
     /*  outline: 2px solid red; */
     height: 45%;
     width: 45%;
+    margin-left: 30px;
 }
 .last_operation{  
     height: 45%;
-    width: 45%;
+    width: 50%;
     color: black;
     border: 6px solid #f8f9fa;
     background-color: #f8f9fa;
     border-radius: 8%;
+    margin-right: 30px;
     box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
@@ -39,9 +41,11 @@
      color: black;
     border: 1px solid #f8f9fa;
     background-color: #f8f9fa;
-    border-radius: 5%;
+    border-radius: 8%;
     box-shadow: -2px 1px 10px 9px rgba(142,154,175,0.87);
     -webkit-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
     -moz-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
     padding: 40px;
+    margin-left: 30px;
+    margin-top: 40px;
 }
