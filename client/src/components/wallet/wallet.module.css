@@ -21,7 +21,8 @@
     height: 60%;
     width: 60%;
     background: rgb(60,120,178);
-    background: linear-gradient(90deg, rgb(40, 90, 137) 5%, rgb(8, 41, 72)90%);
+    background: linear-gradient(90deg, rgb(9, 60, 108) 5%, rgb(8, 72, 131)90%);
+    color: rgb(221, 212, 212);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -33,8 +34,8 @@
 
 .div_container :hover{
 
-opacity: 0.8;
-transition: 1s;
+opacity: 1;
+transition: 0.5s;
 }
 
 .head_wallet{

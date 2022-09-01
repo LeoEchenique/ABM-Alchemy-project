@@ -29,11 +29,11 @@ padding: 20px;
     align-items: flex-start;
     justify-content: space-between;
     padding-top: 20px;
+    
 
 }
 
 .a{
-/*     outline: 2px solid white; */
     display: flex;
     align-items: center;
     color: white;
@@ -42,4 +42,13 @@ padding: 20px;
     margin:2px;
     font-family: 'Montserrat', sans-serif;
     font-weight:  300;
+}
+
+.a:hover img{
+     
+    transform: rotate(360deg);
+    transition: 0.5s;
+}
+.nav_links img{
+    padding-right: 20px;
 }
