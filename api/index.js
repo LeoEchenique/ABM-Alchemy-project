@@ -4,7 +4,7 @@ const { Wallet } = require("./src/db.js")
 const PORT = process.env.PORT || 3001;
 
 
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
     /*     try {
             await Wallet.create({ Funds: 500 })
         } catch (error) {

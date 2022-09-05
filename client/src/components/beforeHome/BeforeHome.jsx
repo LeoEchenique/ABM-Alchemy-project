@@ -1,66 +1,124 @@
 import React from "react";
 import style from "./beforeHome.module.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import jwt_decode from "jwt-decode";
-import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { googleLogout } from "@react-oauth/google";
-//client id should be the ID credential of google
 
 export default function BeforeHome() {
-  const [loginData, setLoginData] = useState(
-    localStorage.getItem("loginData")
-      ? JSON.parse(localStorage.getItem("loginData"))
-      : null
-  );
-
-  const logout = () => {
-    localStorage.removeItem("loginData");
-    setLoginData(null);
-  };
-  const googleLogin = useGoogleLogin({
-    onSuccess: async ({ code }) => {
-      const tokens = await axios.post("http://localhost:3001/auth/google", {
-        // http://localhost:3001/auth/google backend that will exchange the code
-        code,
-      });
-
-      console.log(tokens);
-      let user = jwt_decode(tokens.data.id_token);
-      console.log("user jwt", user);
-      localStorage.setItem("loginData", JSON.stringify(user)); // passing to JSON object.
-      setLoginData(user);
-      let storage = localStorage.getItem("loginData");
-      console.log(JSON.parse(storage), "leo"); // noted that to view the retrieving localStorage must parse again to js object.
-      window.location.replace("http://localhost:3000/Home");
-    },
-    flow: "auth-code",
+  const [log, setLog] = useState(false);
+  // sign in button activates a local state to true, then the render of the fign form changes.
+  const [form, setForm] = useState({
+    Name: "",
+    Email: "",
+    Password: "",
   });
 
-  // User now can login and be automatically redirected to /Home.
-  // missing: middleware function to validate token access on each request
-  // missing: create User model and inject conection to DB
-  // missing: relational models between user and wallet (wallet already has the relation with operations)
-  // missing: visualize the user info once logged on navBar.
+  const handleClick = () => {
+    setLog(!log);
+    setForm({
+      Name: "",
+      Email: "",
+      Password: "",
+    });
+  };
+  const handleChange = (e) => {
+    setForm((values) => ({ ...values, [e.target.name]: e.target.value }));
+  };
+
+  const createUser = async (e) => {
+    // if register
+    e.preventDefault();
+
+    // pass the post to a validator function to see if all is ok
+
+    // si tiene token: se guarda en la localStorage y se hace el pase a home.
+    try {
+      let res = await axios.post("http://localhost:3001/auth/createUser", form);
+      if (res.data.Token) {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        window.location.replace("http://localhost:3000/Home");
+      }
+    } catch (error) {
+      alert(error.response.data);
+      setLog(false);
+    }
+  };
+
+  const handleLog = async (e) => {
+    // if log in..
+    e.preventDefault();
+    try {
+      let res = await axios.post("http://localhost:3001/auth/logUser", form);
+      if (res.data.logged === true) {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        window.location.replace("http://localhost:3000/Home");
+      }
+    } catch (error) {
+      alert(error.response.data);
+      setLog(true);
+    }
+  };
+
   return (
     <div className={style.div_container}>
-      <div>
-        <h1>Hello world</h1>
-        <Link to="/Home">Get started</Link>
-        <div id="signInDiv">
-          {loginData ? (
-            <div>
-              <h1>{loginData.email}</h1>
-              <button onClick={() => logout()}>log out 🚀 </button>
-            </div>
-          ) : (
-            <button onClick={() => googleLogin()}>
-              Sign in with Google 🚀{" "}
-            </button>
-          )}
+      {log === false ? (
+        <div>
+          <h2>Hi there!</h2>
+          <div className={style.sign}>
+            <h2>Time for some managment? </h2>
+            <form
+              onChange={(e) => handleChange(e)}
+              onSubmit={handleLog}
+              className={style.form}
+            >
+              <label className={style.label} htmlFor="email">
+                {" "}
+                Email:{" "}
+              </label>
+              <input type="text" id="email" name="Email" />
+
+              <label className={style.label} htmlFor="pass">
+                {" "}
+                Password:{" "}
+              </label>
+              <input type="password" id="pass" name="Password" />
+              <input type="submit" value="Log in!" />
+            </form>
+            <span>Or..</span>
+            <h3 onClick={handleClick}> Sign in</h3>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div>
+          <h2>Hi there!</h2>
+          <div className={style.sign}>
+            <h2>An easy step for you to get started.. </h2>
+            <form
+              onChange={(e) => handleChange(e)}
+              onSubmit={createUser}
+              className={style.form}
+            >
+              <label className={style.label} htmlFor="email">
+                {" "}
+                Email:{" "}
+              </label>
+              <input type="text" id="email" name="Email" />
+              <label className={style.label} htmlFor="email">
+                {" "}
+                Name:{" "}
+              </label>
+              <input type="text" id="name" name="Name" />
+              <label className={style.label} htmlFor="pass">
+                {" "}
+                Password:{" "}
+              </label>
+              <input type="password" id="pass" name="Password" />
+              <input type="submit" value="Register now!" />
+            </form>
+            <span>Or..</span>
+            <h3 onClick={handleClick}> Log in </h3>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

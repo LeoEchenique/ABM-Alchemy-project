@@ -8,9 +8,10 @@ import axios from "axios";
 export default function Wallet({balance}) {
 
     const [wallet,setWallet]=useState([]) 
-    
+    let user= JSON.parse(localStorage.getItem("user"))
+
     const getWallet = async ()=>{
-        let wallet = await axios.get("http://localhost:3001/Wallet")
+        let wallet = await axios.get(`http://localhost:3001/Wallet/${user.Token}`);
         setWallet(wallet.data)
     }   
     
@@ -18,6 +19,7 @@ export default function Wallet({balance}) {
       getWallet()
     },[])
 
+    
     return (
         <div className={style.div_container}>
             <h1>Your wallet</h1>
@@ -28,11 +30,11 @@ export default function Wallet({balance}) {
                     <img className={style.icon_verify} src={icon_update} alt=""/>
                 </div>
 
-                {balance ? balance.map(b => <h1 key={b.Id} className={style.current_balance} >${b.Funds} </h1>)
-                    : wallet?.length ? 
-                     wallet.map(wallet=>  <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>)
-                    
-                : null}
+                {wallet ? 
+                <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>
+                : null }
+                  
+             
                 <h3 className={style.card_number}> **** **** **** ****</h3>
             </div>
 

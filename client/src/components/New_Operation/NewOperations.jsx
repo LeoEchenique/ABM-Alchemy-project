@@ -9,12 +9,14 @@ import { useParams } from "react-router-dom";
 export default function NewOperation() {
   /* this will recieve the entire operation to display in the form in case of an update */
   let { id } = useParams();
+  let user = JSON.parse(localStorage.getItem("user"))
+  console.log(user, "her")
   const [updateOp, setUpdateOp] = useState(null);
   const [form, setForm] = useState({
     Reason: "",
     Mount: "",
     Type: "Select",
-    Fk_wallet: 1,
+    Token: user.Token
   });
 
 

@@ -25,10 +25,13 @@ server.use((req, res, next) => {
     next();
 });
 server.use("/auth", function (req, res, next) {
-    let { hola } = req.body;
-    console.log(
-        "pase por el mid"
-    ); /* middleware - it should be placed on a folder "middlewares" and from there import server instance (exported down below) */
+    // should automatically request another token and if found  procced to the local server req
+    // or validate the current one
+
+
+    // 
+
+    // middleware - it should be placed on a folder "middlewares" and from there import server instance (exported down below)
 
     next();
 });

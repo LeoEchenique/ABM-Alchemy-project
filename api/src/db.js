@@ -33,10 +33,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 
 // relational models
-const { Wallet, Operation } = sequelize.models;     /* HERE THE MODELS TO INJECT THE CONECTION */
+const { Wallet, Operation, User } = sequelize.models;     /* HERE THE MODELS TO INJECT THE CONECTION */
 
 
-
+User.belongsTo(Wallet);
 Wallet.hasMany(Operation);
 Operation.belongsTo(Wallet);
 

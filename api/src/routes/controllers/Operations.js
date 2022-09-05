@@ -1,21 +1,27 @@
 
 const { Router } = require('express');
-const { Wallet, Operation } = require("../../db");
+const { Wallet, Operation, User } = require("../../db");
 const { Calculator } = require("../../Calculate_Balance/Calculator")
 const router = Router();
 
 
 router.post("/New", async (req, res) => {
 
-    const { Reason, Mount, Type, Fk_wallet } = req.body;
+    const { Reason, Mount, Type, Token } = req.body;
+
     try {
-        const wallet = await Wallet.findByPk(Fk_wallet);
+        const user = await User.findOne({
+            where: {
+                Token: Token
+            },
+            include: "Wallet",
+        });
+        const wallet = await Wallet.findByPk(user.WalletId);
         const balance = wallet.dataValues.Funds;
-        console.log(balance)
         const newBalance = Calculator(Type, Mount, balance);
         if (newBalance === "Denied") throw new Error("Not enough funds to realize the operation.");
         const date = new Date();
-        console.log(newBalance)
+
         const operation = await Operation.create({
             Reason,
             Mount,
@@ -23,7 +29,7 @@ router.post("/New", async (req, res) => {
             Balance: newBalance,
             Date: date
         });
-        await operation.setWallet(Fk_wallet);
+        await operation.setWallet(wallet.dataValues.Id);
         wallet.Funds = newBalance;
         await wallet.save();
         res.status(202).send({
@@ -53,7 +59,7 @@ router.get("/Latest", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     let { id } = req.params;
-    console.log(id)
+
     try {
         let operation = await Operation.findByPk(id);
         res.status(200).send(operation)

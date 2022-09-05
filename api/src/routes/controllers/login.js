@@ -1,44 +1,60 @@
 const { Router } = require("express");
 const router = Router();
-const { OAuth2Client } = require("google-auth-library");
+const { User, Wallet } = require("../../db");
+const { TokenGen } = require("../../token_gen/tokenGen")
 
-const oAuth2Client = new OAuth2Client(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    "postmessage"
-);
 
-router.get("/", (req, res) => {
-    let { hola } = req.body;
-    res.send(hola);
-});
+router.post("/createUser", async (req, res) => {
+    let { Name, Email, Password } = req.body;
 
-router.post("/token", async (req, res) => {
-    const { token } = req.body;
-    console.log("entre");
     try {
-        const ticket = await oAuth2Client.verifyIdToken({
-            // this is useless.
-            idToken: token,
-            audience: process.env.CLIENT_ID,
+        let token = TokenGen(Name)
+        let founded = await User.findOne({
+            where: {
+                Email: Email
+            }
+        })
+        if (founded) {  // bad
+            return res.status(401).send("User already created")
+        }
+        const user = await User.create({
+            Name,
+            Email,
+            Password
         });
+        let wallet = await Wallet.create({ Funds: 0 })
+        await user.setWallet(wallet)
 
-        //   with this information i'm suppose to findOrCreate an instance of user (also create and inyect the modal "users" to the DB)
-        const { name, email, picture } = ticket.getPayload();
-        console.log(name, email, picture);
-        res.status(200).send({ name, email, picture });
-        res.send(token);
+        user.Token = token;
+        user.save();
+        res.status(202).send(user)
     } catch (error) {
-        res.status(404).send(error.message);
+        res.status(500).send("An error has ocurred")
     }
-});
+})
 
-router.post("/google", async (req, res) => {
-    // when decode with jwt gives the profile information.
-    const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
-    console.log(tokens);
 
-    res.json(tokens);
-});
+router.post("/logUser", async (req, res) => {
+    let { Email, Password } = req.body;
+    try {
+        let token = TokenGen(Email)
+        let user = await User.findOne({
+            where: {
+                Email: Email,
+                Password: Password
+            }
+        })
+        user.Token = token;
+        user.save();
+        res.send(({
+            Name: user.Name,
+            Token: user.Token,
+            Picture: user.Picture,
+            logged: true
+        }))
+    } catch (error) {
+        res.status(404).send("User don't exist!")
+    }
+})
 
 module.exports = router;
