@@ -35,3 +35,12 @@
 .icon_delete{
     cursor: pointer;
 }
+
+.mount_less{
+   
+    color:rgb(183, 34, 34);
+ }
+ 
+ .mount_more{
+     color: rgb(6, 137, 6);
+ }   

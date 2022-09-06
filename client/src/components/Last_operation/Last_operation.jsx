@@ -30,7 +30,7 @@ export default function Last_operation() {
                 <h3 className={style.reason}>{operation.Reason}</h3>
                 <h3>{operation.Type}</h3>
                 <h3>{operation.Date}</h3>
-                {operation.Type === "Income" ?  <h3> + $ {operation.Mount}</h3> : <h3> - $ {operation.Mount}</h3>}
+                {operation.Type === "Income" ?  <h3 className={style.mount_more}> + $ {operation.Mount}</h3> : <h3 className={style.mount_less}> - $ {operation.Mount}</h3>}
             </div>
             : <h1>You don't have any operations yet, make one!</h1>}
             <Link className={style.button_operation} to="/Home/Operations/NewOperation/">  Submit an operation </Link>   {/* mandar ID por params / hacer el get operation por el id para precargar los datos al formulario */}

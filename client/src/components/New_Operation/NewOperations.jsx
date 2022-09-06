@@ -51,7 +51,8 @@ export default function NewOperation() {
       return;
     }
     await axios.post("http://localhost:3001/Operations/New", form)
-    .then(()=> alert("Operation created!"))
+      .then(() => alert("Operation created!"))
+      .catch(err=> alert(err.response.data))
   };
 
   return (

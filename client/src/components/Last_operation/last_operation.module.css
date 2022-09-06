@@ -52,3 +52,12 @@ margin-left: -10px;
 opacity: 1;
 transition: all 0.5s;
 }
+
+.mount_less{
+   
+   color:rgb(183, 34, 34);
+}
+
+.mount_more{
+    color: rgb(6, 137, 6);
+}   
