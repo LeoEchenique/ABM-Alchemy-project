@@ -3,10 +3,12 @@ import style from "./beforeHome.module.css";
 import { useState } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import { validator } from "../../helpers/Validator";
 
 export default function BeforeHome() {
   const [log, setLog] = useState(false);
-  const [swali, setSwali]= useState(false)
+  const [swali, setSwali] = useState(false)
+  const [err, setErr]= useState({})
   // sign in button activates a local state to true, then the render of the fign form changes.
   const [form, setForm] = useState({
     Name: "",
@@ -33,32 +35,40 @@ export default function BeforeHome() {
     // pass the post to a validator function to see if all is ok
 
     // si tiene token: se guarda en la localStorage y se hace el pase a home.
-    try {
-      let res = await axios.post("http://localhost:3001/auth/createUser", form);
-      if (res.data.Token) {
-        localStorage.setItem("user", JSON.stringify(res.data));
-        window.location.replace("http://localhost:3000/Home");
+    let validate = validator(form, "sign_in");
+
+    if (validate === true) {
+      try {
+        let res = await axios.post("http://localhost:3001/auth/createUser", form);
+        if (res.data.Token) {
+          localStorage.setItem("user", JSON.stringify(res.data));
+          window.location.replace("http://localhost:3000/Home");
+        }
+      } catch (error) {
+        alert(error.response.data);
+        setLog(false);
       }
-    } catch (error) {
-      alert(error.response.data);
-      setLog(false);
-    }
+    } else setErr(validate)   // done, missing styles for errors.
+  
   };
 
   const handleLog = async (e) => {
     // if log in..
     e.preventDefault();
-    try {
-      let res = await axios.post("http://localhost:3001/auth/logUser", form);
-      if (res.data.logged === true) {
-        localStorage.setItem("user", JSON.stringify(res.data));
-        window.location.replace("http://localhost:3000/Home");
+      try {
+        let res = await axios.post("http://localhost:3001/auth/logUser", form);
+        if (res.data.logged === true) {
+          localStorage.setItem("user", JSON.stringify(res.data));
+          window.location.replace("http://localhost:3000/Home");
+        }
+      } catch (error) {
+        alert(error.response.data); // here sweetAlert saying that user doesnt exist or an error ocurred with the data provided
+        setLog(true);
       }
-    } catch (error) {
-      alert(error.response.data);
-      setLog(true);
-    }
+
+    
   };
+  
   const fireSwal = () => {
     Swal.fire({
       position: 'center',

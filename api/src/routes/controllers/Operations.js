@@ -52,7 +52,7 @@ router.get("/Latest/:Token", async (req, res) => {
             },
             attributes: ["WalletId"]
         })
-        console.log(user)
+
         let operations = await Operation.findAll({
             where: {
                 WalletId: user.dataValues.WalletId
