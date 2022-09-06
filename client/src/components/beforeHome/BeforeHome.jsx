@@ -2,9 +2,11 @@ import React from "react";
 import style from "./beforeHome.module.css";
 import { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default function BeforeHome() {
   const [log, setLog] = useState(false);
+  const [swali, setSwali]= useState(false)
   // sign in button activates a local state to true, then the render of the fign form changes.
   const [form, setForm] = useState({
     Name: "",
@@ -57,14 +59,26 @@ export default function BeforeHome() {
       setLog(true);
     }
   };
-
+  const fireSwal = () => {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Nice! you will be redirected shortly',
+      showConfirmButton: false,
+      timer: 1500,
+      didClose:()=> window.location.replace("http://localhost:3000/Home")
+    })
+  }
   return (
     <div className={style.div_container}>
+        {swali === true ? 
+        fireSwal()
+      : null}
       {log === false ? (
         <div>
-          <h2>Hi there!</h2>
+     
           <div className={style.sign}>
-            <h2>Time for some managment? </h2>
+            <h2>Time for some budget management? </h2>
             <form
               onChange={(e) => handleChange(e)}
               onSubmit={handleLog}
@@ -89,12 +103,12 @@ export default function BeforeHome() {
         </div>
       ) : (
         <div>
-          <h2>Hi there!</h2>
+        
           <div className={style.sign}>
             <h2>An easy step for you to get started.. </h2>
             <form
               onChange={(e) => handleChange(e)}
-              onSubmit={createUser}
+              onSubmit={createUser} 
               className={style.form}
             >
               <label className={style.label} htmlFor="email">

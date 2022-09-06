@@ -2,22 +2,24 @@
 import React from "react";
 import Nav from "../Nav/Nav";
 import style from "./NewOperation.module.css";
+import Modal from "../modal/modal.jsx"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 export default function NewOperation() {
   /* this will recieve the entire operation to display in the form in case of an update */
   let { id } = useParams();
   let user = JSON.parse(localStorage.getItem("user"))
-  console.log(user, "her")
   const [updateOp, setUpdateOp] = useState(null);
+  const [swali, setSwali]= useState(false)
   const [form, setForm] = useState({
     Reason: "",
     Mount: "",
     Type: "Select",
     Token: user.Token
   });
+  
 
 
   
@@ -45,19 +47,31 @@ export default function NewOperation() {
       await axios
         .put(`http://localhost:3001/Operations/UpDate/${updateOp.Id}`, form)
         .then(() => {
-          alert("Updated succesfully");
+          setSwali(true)
         })
         .catch((res) => alert(res.response.data));
       return;
     }
     await axios.post("http://localhost:3001/Operations/New", form)
-      .then(() => alert("Operation created!"))
+      .then(() => setSwali(true))
       .catch(err=> alert(err.response.data))
   };
-
+  const fireSwal = () => {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Nice! you will be redirected shortly',
+      showConfirmButton: false,
+      timer: 1500,
+      didClose:()=> window.location.replace("http://localhost:3000/Home")
+    })
+  }
   return (
     <div className={style.div_container}>
       <Nav />
+      {swali === true ? 
+        fireSwal()
+      : null}
       {updateOp !== null ? (
         <form
           className={style.form_box}
@@ -130,9 +144,11 @@ export default function NewOperation() {
          
                 <input type="submit" value="Submit your operation" className={style.submit} /> 
             </div>
-          </div>
+            </div>
+ 
         </form>
       )}
+     
     </div>
   );
 }
