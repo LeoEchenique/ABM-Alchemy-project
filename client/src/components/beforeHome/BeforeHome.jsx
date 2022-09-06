@@ -70,21 +70,21 @@ export default function BeforeHome() {
               onSubmit={handleLog}
               className={style.form}
             >
-              <label className={style.label} htmlFor="email">
+              <label   className={style.label} htmlFor="email">
                 {" "}
                 Email:{" "}
               </label>
-              <input type="text" id="email" name="Email" />
+              <input  className={style.input}    placeholder="Email..."  type="text" id="email" name="Email" />
 
-              <label className={style.label} htmlFor="pass">
+              <label  className={style.label} htmlFor="pass">
                 {" "}
                 Password:{" "}
               </label>
-              <input type="password" id="pass" name="Password" />
-              <input type="submit" value="Log in!" />
+              <input className={style.input}    placeholder="Password..." type="password" id="pass" name="Password" />
+              <input  type="submit" className={style.log_button} value="Log in!" />
             </form>
             <span>Or..</span>
-            <h3 onClick={handleClick}> Sign in</h3>
+            <h3  className={style.log_button}onClick={handleClick}> Sign in</h3>
           </div>
         </div>
       ) : (
@@ -101,21 +101,21 @@ export default function BeforeHome() {
                 {" "}
                 Email:{" "}
               </label>
-              <input type="text" id="email" name="Email" />
+              <input className={style.input}   placeholder="Email..." type="text" id="email" name="Email" />
               <label className={style.label} htmlFor="email">
                 {" "}
                 Name:{" "}
               </label>
-              <input type="text" id="name" name="Name" />
+              <input className={style.input}  placeholder="Name..." type="text" id="name" name="Name" />
               <label className={style.label} htmlFor="pass">
                 {" "}
                 Password:{" "}
               </label>
-              <input type="password" id="pass" name="Password" />
-              <input type="submit" value="Register now!" />
+              <input className={style.input} placeholder="Password..." type="password" id="pass" name="Password" />
+              <input  type="submit" className={style.log_button} value="Register now!" />
             </form>
             <span>Or..</span>
-            <h3 onClick={handleClick}> Log in </h3>
+            <h3 className={style.log_button} onClick={handleClick}> Log in </h3>
           </div>
         </div>
       )}

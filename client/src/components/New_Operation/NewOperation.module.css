@@ -16,6 +16,7 @@
     -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     background-image: url("http://res.cloudinary.com/leo-echenique/image/upload/v1661872776/dzbo3dauoepqaoas2wrt.jpg");
+    opacity: 0.97;
 }
 
 .container_form{
