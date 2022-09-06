@@ -40,7 +40,7 @@ export default function LatestOperation({ currentBalance }) {
                         <h3>{operation.Date}</h3>
                         {operation.Type === "Income" ?  <h3 className={style.mount_more}> + $ {operation.Mount}</h3> : <h3 className={style.mount_less}> - $ {operation.Mount}</h3>}
                     <div className={style.icons}>
-                        <Link to={`/Home/Operations/NewOperation/${operation.Id}`}>  <img src={icon_edit} alt="" />   </Link>
+                        <Link to={`/Home/Operations/NewOperation/${operation.Id}`} className={style.icon_edit}>  <img src={icon_edit} alt="" />   </Link>
                         <img className={style.icon_delete} src={icon_delete} alt="" onClick={()=>handleDelete(operation.Id)}/>
                     </div>
                     </div>

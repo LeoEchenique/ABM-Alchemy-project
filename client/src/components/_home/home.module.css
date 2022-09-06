@@ -35,17 +35,18 @@
 }
 
 .last_ten_operations{
-    
     height: 40%;
-    width: 90%;
+    width: 92.2%;
      color: black;
     border: 1px solid #f8f9fa;
     background-color: #f8f9fa;
-    border-radius: 8%;
+     border-radius: 8%; 
     box-shadow: -2px 1px 10px 9px rgba(142,154,175,0.87);
     -webkit-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
     -moz-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
-    padding: 40px;
+   padding: 40px;
+   padding-left: 20px;
     margin-left: 30px;
-    margin-top: 40px;
+    margin-top: 40px; 
+    margin-bottom: -60px;
 }

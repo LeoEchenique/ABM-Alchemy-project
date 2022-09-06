@@ -6,6 +6,7 @@
     width: 100%;
     overflow-x:auto;
     overflow-x: hidden;
+  
 }
 .operation{
 
@@ -14,6 +15,7 @@
    justify-content: space-evenly;
     width: 100%;
     padding: 20px;
+    
 }
 .icons{
     display: flex;
@@ -44,3 +46,12 @@
  .mount_more{
      color: rgb(6, 137, 6);
  }   
+
+ .icon_delete:hover{
+transform: rotate(360deg);
+            transition: 0.5s;
+ }
+.icon_edit:hover{
+    transform: rotate(360deg);
+    transition: 0.5s;
+ }
