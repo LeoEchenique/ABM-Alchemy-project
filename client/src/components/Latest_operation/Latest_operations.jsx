@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function LatestOperation({currentBalance}) {
+export default function LatestOperation({ currentBalance }) {
+    
+    let user = JSON.parse(localStorage.getItem("user"));
     const [operations, setOperations] = useState([]);
 
     const getOperations = async ()=>{
-        let operation = await axios.get("http://localhost:3001/Operations/Latest");
+        let operation = await axios.get(`http://localhost:3001/Operations/Latest/${user.Token}`);
         setOperations(operation.data)
     }   
     useEffect( () => {

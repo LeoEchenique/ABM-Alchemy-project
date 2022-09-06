@@ -42,10 +42,21 @@ router.post("/New", async (req, res) => {
 })
 
 
-router.get("/Latest", async (req, res) => {
+router.get("/Latest/:Token", async (req, res) => {
+    let { Token } = req.params;
 
     try {
+        let user = await User.findOne({
+            where: {
+                Token: Token
+            },
+            attributes: ["WalletId"]
+        })
+        console.log(user)
         let operations = await Operation.findAll({
+            where: {
+                WalletId: user.dataValues.WalletId
+            },
             limit: 10,
             order: [["Date", "DESC"]]
         })

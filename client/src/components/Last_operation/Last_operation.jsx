@@ -9,9 +9,11 @@ import axios from "axios";
 export default function Last_operation() {
     
     const [operation, setOperation] = useState({});
+    let user = JSON.parse(localStorage.getItem("user"));
 
     const getOperation = async () => {
-        let last_operation = await axios.get("http://localhost:3001/Operations/Latest");
+        let last_operation = await axios.get(`http://localhost:3001/Operations/Latest/${user.Token}`);
+        
         setOperation(last_operation.data[0]);
     }
     useEffect( () => {
