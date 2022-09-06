@@ -20,8 +20,8 @@
 .card_wallet{
     height: 60%;
     width: 60%;
-    background: rgb(60,120,178);
-    background: linear-gradient(90deg, rgb(9, 60, 108) 5%, rgb(8, 72, 131)90%);
+    background: rgb(36, 90, 140);
+    background: linear-gradient(90deg, rgb(9, 60, 108) 5%, rgb(13, 57, 97)90%);
     color: rgb(221, 212, 212);
     border-radius: 20px;
     display: flex;
@@ -29,7 +29,7 @@
     box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
     -webkit-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
     -moz-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
-    opacity: 0.8;
+    opacity: 0.868;
 }
 
 .div_container :hover{
