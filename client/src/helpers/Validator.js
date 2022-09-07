@@ -3,7 +3,7 @@ export const validator = (form, key) => {
 
     let success = false;
 
-    console.log(form)
+
 
 
     if (key === "operation") {
@@ -19,18 +19,21 @@ export const validator = (form, key) => {
         let err = {
             email: "Email not provided", // // if email is invalid by regex change text to "invalid email"
             name: "Name not provided",
-            password: "Need a password"
+            password: "Password not povided"
         }
-        if (form.Name) err.name = "";
-        if (form.Password.length >= 5) err.password = ""
-        else if (form.Password.length > 0) err.password = "Password must have at least 5 characters";
-        if (form.Email) {
+        if (form.Name.length) err.name = "";
+        if (form.Password.length > 0) err.password = "Password must have at least 5 characters";
+        else if (form.Password.length >= 5) err.password = "";
+
+        if (form.Email.length) {
+            // eslint-disable-next-line no-useless-escape
             let reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
             if (reg.test(form.Email)) err.email = "";
             else err.email = "Invalid Email"
         }
         !err.email && !err.name && !err.password ? success = true : success = false
-        if (success !== true) return err
+        console.log(success)
+        if (success === false) return err
         else return success
     }
 
