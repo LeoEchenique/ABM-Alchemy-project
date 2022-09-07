@@ -26,7 +26,7 @@ export default function BeforeHome() {
     });
     console.log(formRef)
     formRef.current.reset();
-    console.log(formRef,"e")
+    setErr({})
 
   };
   const handleChange = (e) => {
@@ -63,17 +63,19 @@ export default function BeforeHome() {
     // if log in..
     e.preventDefault();
     let validate = validator(form, "log_in");
-    try {
-      let res = await axios.post("http://localhost:3001/auth/logUser", form);
-      if (res.data.logged === true) {
-        localStorage.setItem("user", JSON.stringify(res.data));
-        window.location.replace("http://localhost:3000/Home");
+    if (validate === true) {
+      try {
+        let res = await axios.post("http://localhost:3001/auth/logUser", form);
+        if (res.data.logged === true) {
+          localStorage.setItem("user", JSON.stringify(res.data));
+          window.location.replace("http://localhost:3000/Home");
+        }
+      } catch (error) {
+        alert(error.response.data); // here sweetAlert saying that user doesnt exist or an error ocurred with the data provided
+  
+        setLog(true);
       }
-    } catch (error) {
-      alert(error.response.data); // here sweetAlert saying that user doesnt exist or an error ocurred with the data provided
-
-      setLog(true);
-    }
+    } else setErr(validate);
   };
 
   const fireSwal = () => {
@@ -113,7 +115,9 @@ export default function BeforeHome() {
                 name="Email"
                 value={form.Email}
               />
-
+              {err?.email?.length ? (
+                <span className={style.err}>{err.email}</span>
+              ) : null}
               <label className={style.label} htmlFor="pass">
               Password:
               </label>
@@ -125,7 +129,9 @@ export default function BeforeHome() {
                 name="Password"
                 value={form.Password}
               />
-              
+                    {err?.password?.length ? (
+                <span className={style.err}>{err.password}</span>
+              ) : null}
               <input
                 type="submit"
                 className={style.log_button}
