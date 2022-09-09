@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
- /*  outline: 2px solid red; */
+
 /*   background: #f8f9fa; */
   color: black;
 }
@@ -13,13 +13,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    outline: 2px solid red;
 }
 
 .wallet{
     /*  outline: 2px solid red; */
     height: 45%;
     width: 45%;
-    margin-left: 30px;
+   /*  margin-left: 30px; */
 }
 .last_operation{  
     height: 45%;
@@ -28,7 +29,7 @@
     border: 6px solid #f8f9fa;
     background-color: #f8f9fa;
     border-radius: 8%;
-    margin-right: 30px;
+   /*  margin-right: 30px; */
     box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
     -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
@@ -46,7 +47,7 @@
     -moz-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
    padding: 40px;
    padding-left: 20px;
-    margin-left: 30px;
+  /*   margin-left: 30px;
     margin-top: 40px; 
-    margin-bottom: -60px;
+    margin-bottom: -60px; */
 }

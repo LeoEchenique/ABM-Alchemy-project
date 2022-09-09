@@ -94,9 +94,9 @@ export default function BeforeHome() {
     <div className={style.div_container}>
       {swali === true ? fireSwal() : null}
       {log === false ? (
-        <div>
+       
           <div className={style.sign}>
-            <h2>Time for some budget management? </h2>
+            <h2 className={style.log_title}>Time for some budget management? </h2>
             <form
               ref={formRef}
               onChange={(e) => handleChange(e)}
@@ -144,11 +144,11 @@ export default function BeforeHome() {
               Sign in
             </h3>
           </div>
-        </div>
+     
       ) : (
-        <div>
+        
           <div className={style.sign}>
-            <h2>An easy step for you to get started.. </h2>
+            <h2  className={style.log_title}>An easy step for you to get started.. </h2>
               <form
                   ref={formRef}
               onChange={(e) => handleChange(e)}
@@ -210,7 +210,7 @@ export default function BeforeHome() {
             <span>Or..</span>
               <h3  className={style.log_button} onClick={handleClick}> Log in  </h3>
           </div>
-        </div>
+
       )}
     </div>
   );
