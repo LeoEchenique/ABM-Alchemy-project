@@ -1,23 +1,29 @@
 .div_container{
-
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-between;
-height: 100%;
-font-family: 'Montserrat', sans-serif;
-font-weight:  300;
-margin-left: -10px;
+   /*  max-width: 660px; */
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    border: 6px solid #f8f9fa;
+    background-color: #f8f9fa;
+    border-radius: 8%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:  300;
+    /* margin:20px; */
+    box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+-webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+-moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
 }
 
 .operation{
-
+    
     display: flex;
    align-items: center;
-   justify-content: space-evenly;
-    width: 95%;
-    padding: 20px;
-
+    justify-content: space-evenly;
+    margin: auto;
+    width: 100%;
 }
 .button_operation{
     margin-bottom: 80px;
@@ -43,9 +49,6 @@ margin-left: -10px;
     text-decoration: none;
     background: rgb(60,120,178);
     background: linear-gradient(90deg, rgb(9, 60, 108) 5%, rgb(8, 72, 131)90%);
-    box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
-    -webkit-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
-    -moz-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
     opacity: 0.8;
 }
 .button_operation:hover{
@@ -61,3 +64,9 @@ transition: all 0.5s;
 .mount_more{
     color: rgb(6, 137, 6);
 }   
+
+@media screen and (max-width: 1725px) {
+    .div_container{
+        max-width: 660px; 
+    }
+}

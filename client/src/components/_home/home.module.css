@@ -1,5 +1,5 @@
 .div_container{
-    width: 100vw;
+    width: 99vw;
     height: 100vh;
     display: flex;
 
@@ -12,27 +12,32 @@
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    outline: 2px solid red;
+    justify-content:space-evenly;   
 }
 
 .wallet{
     /*  outline: 2px solid red; */
     height: 45%;
     width: 45%;
+    min-width: 720px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    /*  margin-left: 30px; */
+ 
 }
 .last_operation{  
     height: 45%;
-    width: 50%;
-    color: black;
-    border: 6px solid #f8f9fa;
-    background-color: #f8f9fa;
-    border-radius: 8%;
-   /*  margin-right: 30px; */
-    box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
-    -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
-    -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+    width: 45%;
+    min-width: 720px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /*  margin-left: 30px; */
+
+    
 }
 
 .last_ten_operations{
@@ -50,4 +55,11 @@
   /*   margin-left: 30px;
     margin-top: 40px; 
     margin-bottom: -60px; */
+}
+
+@media screen and (max-width: 1725px){
+
+    .div_container{
+        flex-direction: column;
+    }
 }
