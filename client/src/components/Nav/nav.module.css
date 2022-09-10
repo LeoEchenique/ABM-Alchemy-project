@@ -4,12 +4,11 @@ min-width: 12.2%;
 max-width: 12.2%;
 height: 100vh;
 color: white;
-border-radius: 4%;
 padding: 20px;
 box-shadow:  -4px -4px 24px 9px rgba(30,150,252,0.17); 
 -webkit-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
 -moz-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
-
+align-items: center;
 margin-right: 20px;
 }
 
@@ -31,7 +30,6 @@ margin-right: 20px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    padding-top: 20px;
 }
 .buttonLog{
     border: 0;
@@ -86,30 +84,44 @@ margin-right: 20px;
     height: 7rem;
     display: flex;
     flex-direction: row;
-  
     justify-content: space-between;
-    align-items:center;
+    align-items: flex-end;
+    position:fixed;
+    z-index: 2;
     }
     .user_nav{
-      
+     
         width: 12rem;
+        height: 100%;
     }
     .nav_links{
-  
+      
         height: 100%;
-        width: 40rem;
+        margin: auto;
+        width: 25rem;
         display: flex;
         flex-direction: row;
-       
+        justify-content:space-between ;
+        align-items: center;
     }   
+    .a{
+      
+        height: max-content;
+        width: max-content;
+
+    }
     .buttonLog{
         margin-top: 0rem;
-        height: 8   0%;
-        width: 80%;
-        border-radius: 80%;
+        margin-right: 20px;
+        height: 50px;
+        width: 40px;
+        min-height: max-content;
+        min-width: max-content;
+        display: flex;
+        align-items: center;       
+
     }
     .logOut{
-      
         height: 100%;
         border-radius: 20%;
         display: flex;

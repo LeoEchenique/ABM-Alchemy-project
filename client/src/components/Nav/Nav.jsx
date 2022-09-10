@@ -6,7 +6,6 @@ import icon_operation from "../icons/icon_operationNav.png";
 import icon_user from "../icons/icon_user.png";
 import { useState, useEffect } from "react";
 
-import axios from "axios";
 
 export default function Nav() {
   const [logged, setLogged] = useState({});

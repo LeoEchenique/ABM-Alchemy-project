@@ -1,7 +1,8 @@
 .div_container{
    
-    height: 90%;
+    height: 20.625rem;
     width: 90%;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +21,7 @@
 .card_wallet{
     height: 60%;
     width: 60%;
+    min-height: 200px;
     background: rgb(36, 90, 140);
     background: linear-gradient(90deg, rgb(9, 60, 108) 5%, rgb(13, 57, 97)90%);
     color: rgb(221, 212, 212);
@@ -30,8 +32,9 @@
     -webkit-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
     -moz-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
     opacity: 0.86;
+    z-index: 0;
+    padding-bottom: 1rem;
 }
-
 .div_container :hover{
 
 opacity: 1;
@@ -52,4 +55,10 @@ transition: 0.5s;
 }
 .card_number{
     margin-left: 15px;
+}
+
+@media screen and (max-width: 1725px){
+    .card_wallet{
+        z-index: 1;
+    }
 }

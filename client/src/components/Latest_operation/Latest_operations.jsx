@@ -29,15 +29,19 @@ export default function LatestOperation({ currentBalance }) {
 
     return (
         <div className={style.div_container}>
+            <div>
             <h1>Last operations</h1>
-            {operations?.length ?
+            </div>
+            <div>
+                <div className={style.operation_row}>
+                {operations?.length ?
                 operations.map(operation => {
                     return (
                     <div className={style.operation} key={operation.Id}>    
-                        <img src={icon} alt="" />
+                            <img className={style.icon_cash} src={icon} alt="" />
                         <h3 className={style.reason}>{operation.Reason}</h3>
                         <h3>{operation.Type}</h3>
-                        <h3>{operation.Date}</h3>
+                        <h3 className={style.date}>{operation.Date}</h3>
                         {operation.Type === "Income" ?  <h3 className={style.mount_more}> + $ {operation.Mount}</h3> : <h3 className={style.mount_less}> - $ {operation.Mount}</h3>}
                     <div className={style.icons}>
                         <Link to={`/Home/Operations/NewOperation/${operation.Id}`} className={style.icon_edit}>  <img src={icon_edit} alt="" />   </Link>
@@ -47,7 +51,11 @@ export default function LatestOperation({ currentBalance }) {
                     )
                 })
             : <h2 className={style.alternative_operations}>None operations yet...</h2>}
-           
+
+                </div>
+
+            </div>
+
         </div>
     )
 }

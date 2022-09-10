@@ -96,7 +96,7 @@ export default function BeforeHome() {
       {log === false ? (
        
           <div className={style.sign}>
-            <h2 className={style.log_title}>Time for some budget management? </h2>
+            <h2 className={style.log_t}>Time for some budget management? </h2>
             <form
               ref={formRef}
               onChange={(e) => handleChange(e)}
@@ -148,7 +148,7 @@ export default function BeforeHome() {
       ) : (
         
           <div className={style.sign}>
-            <h2  className={style.log_title}>An easy step for you to get started.. </h2>
+            <h2  className={style.log_t}>An easy step for you to get started.. </h2>
               <form
                   ref={formRef}
               onChange={(e) => handleChange(e)}

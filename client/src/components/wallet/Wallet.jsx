@@ -29,12 +29,10 @@ export default function Wallet({balance}) {
                     <h2>Wallet balance</h2>
                     <img className={style.icon_verify} src={icon_update} alt=""/>
                 </div>
-
+            
                 {wallet ? 
                 <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>
                 : null }
-                  
-             
                 <h3 className={style.card_number}> **** **** **** ****</h3>
             </div>
 

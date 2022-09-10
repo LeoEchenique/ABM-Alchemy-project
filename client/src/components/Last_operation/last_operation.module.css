@@ -1,7 +1,7 @@
 .div_container{
    /*  max-width: 660px; */
-    height: 90%;
-    width: 100%;
+    height:20.625rem;
+    width: 40.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +15,7 @@
     box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
 -webkit-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
 -moz-box-shadow: -2px 1px 18px 9px rgba(142,154,175,0.87);
+ 
 }
 
 .operation{
@@ -25,9 +26,7 @@
     margin: auto;
     width: 100%;
 }
-.button_operation{
-    margin-bottom: 80px;
-}
+
 
 .reason{
     
@@ -67,6 +66,15 @@ transition: all 0.5s;
 
 @media screen and (max-width: 1725px) {
     .div_container{
-        max-width: 660px; 
+        max-width: 41.25rem; 
     }
+}
+
+@media screen and (max-width: 1439px) {
+
+    .div_container{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
 }
