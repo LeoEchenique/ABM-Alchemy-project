@@ -31,7 +31,7 @@ export default function Wallet({balance}) {
                 </div>
             
                 {wallet ? 
-                <h1 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h1>
+                <h2 key={wallet.Id} className={style.current_balance} >${wallet.Funds } </h2>
                 : null }
                 <h3 className={style.card_number}> **** **** **** ****</h3>
             </div>

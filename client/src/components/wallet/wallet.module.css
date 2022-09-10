@@ -62,3 +62,19 @@ transition: 0.5s;
         z-index: 1;
     }
 }
+@media screen and (max-width: 450px) {
+    
+    .div_container{
+    
+        height: max-content;
+        min-height: 200px;
+        max-width: 350px;
+    }
+    .div_container h1{
+        display: none;
+    }
+    .card_wallet{
+        width: fit-content;
+        min-width: 320px;
+    }
+}

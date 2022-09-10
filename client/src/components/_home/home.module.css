@@ -15,9 +15,9 @@
 }
 
 .wallet{
-    /*  outline: 2px solid red; */
-    height: 45%;
-    width: 45%;
+    height:max-content;
+    width: max-content;
+    margin: auto;
     min-width: 720px;
   /*   margin: auto; */
     display: flex;
@@ -27,14 +27,15 @@
 
 }
 .last_operation{  
-    height: 45%;
-    width: 45%;
+    height: max-content;
+    width: max-content;
+    margin: auto;
     min-width: 720px;
    /*  margin: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
-   /*  margin-left: 30px; */
+ 
 }
 
 .last_ten_operations{
@@ -61,29 +62,56 @@
 
     .div_container{
         flex-direction: column;
+        
     }
-    .wallet{
+ .wallet{
         margin-top: 10rem; 
     }
     .last_operation{
         margin-top: 10rem;
     }
     .last_ten_operations{
-        margin-top: 4rem;
+        margin-top: 6rem;
         width:90rem;
+    } 
+    .home_content_container{
+       margin-bottom: 20px;
     }
 
 }
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1440px) {
     .wallet{
-        margin-bottom: -180px;
-    }
-    .last_operation{
-        margin-bottom: -50px;
+        margin-bottom: -8rem;
     }
     .last_ten_operations{
         width: 60rem;
+      
+    }
+}
+@media screen and (max-width: 920px) {
+    .last_operation{
+        display: none;
+    }
+    .last_ten_operations{
+   
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .wallet{
+      
+        margin-bottom: 10px;
     }
 }
 
 
+@media  screen and (max-width: 450px) {
+
+    .wallet{
+        margin-bottom: 0.5rem;
+    }   
+    .last_ten_operations{
+        
+        max-width: 370px;
+    }
+
+}

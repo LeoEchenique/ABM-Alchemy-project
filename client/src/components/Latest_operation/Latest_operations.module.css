@@ -84,6 +84,7 @@ transform: rotate(360deg);
         margin: auto;
         align-items: center;
     }
+    
     .icon_cash{
         display: none;
     }
@@ -115,5 +116,31 @@ transform: rotate(360deg);
         margin-right: 2rem;
         margin-left: 0%;
     } 
+
+ }
+
+ @media screen and (max-width: 720px) {
+    .operation h3{
+       
+        width: 100px;
+    }
+    .operation{
+     
+        height: 300px;
+        width: 90%;
+       
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+       
+        margin: 0px;
+        padding: 0px;
+        border-radius: 4%;
+        margin: 0.2rem;
+        text-decoration:underline;
+        border-top: 2px solid rgb(32, 78, 185);
+        border-bottom: 2px solid rgb(32, 78, 185);
+    }
+    
 
  }
