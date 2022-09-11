@@ -37,8 +37,8 @@ export default function Nav() {
         <Link className={style.a} to="/Home">
           <img src={icon_dashboard} alt="" /> Dashboard{" "}
         </Link>
-        <Link className={style.a} to="/Home/Operations/All">
-          <img src={icon_operation} alt="" /> All operations{" "}
+        <Link className={style.a} to="/Home/Operations/NewOperation">
+          <img src={icon_operation} alt="" /> New operation{" "}
         </Link>
       </div>
       <div className={style.logOut}>

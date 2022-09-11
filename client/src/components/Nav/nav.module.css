@@ -16,6 +16,7 @@ margin-right: 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 2.4rem;
 }   
 
 .logOut{
@@ -93,6 +94,7 @@ margin-right: 20px;
      
         width: 12rem;
         height: 100%;
+        margin-bottom: 0px;
     }
     .nav_links{
       

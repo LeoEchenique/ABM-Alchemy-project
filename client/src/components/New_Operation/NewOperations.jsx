@@ -71,7 +71,7 @@ export default function NewOperation() {
       <Nav />
       {swali === true ? 
         fireSwal()
-      : null}
+        : null}
       {updateOp !== null ? (
         <form
           className={style.form_box}
@@ -142,7 +142,7 @@ export default function NewOperation() {
                   name="Mount"
                 />
          
-                <input type="submit" value="Submit your operation" className={style.submit} /> 
+                <input type="submit" value="Submit" className={style.submit} /> 
             </div>
             </div>
  

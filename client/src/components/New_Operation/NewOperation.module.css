@@ -40,11 +40,10 @@
     font-size: 24px;
     font-weight: 500;
     letter-spacing: 2px;
-    padding: 20px;
-    
+
 }
 .form{
-   /*  outline: 2px solid violet; */
+  
     height: 100%;
     width: 40%;
     margin: auto;
@@ -90,7 +89,7 @@
     box-shadow:  2px 4px 12px rgba(184, 184, 185, 0.507);
     font-family: 'Montserrat', sans-serif;
     font-weight:  700;
-    padding-right: 100px;
+    
 }
 .submit:hover{
     background: rgb(153, 156, 149);
@@ -124,4 +123,72 @@ font-weight:  300;
 .form_field::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media screen and (max-width:1725px) {
+ 
+    .div_container{
+        height: 100vh;
+    }
+    .form_box{
+        margin-top: 20vh;
+    }
+}
+
+@media screen and (max-width:1440px) {
+ 
+    .div_container{
+        height: 100vh;
+    }
+
+    .submit{
+
+        padding: 1rem;
+        word-break: break-all;
+
+    }
+}
+
+
+@media screen and (max-width:920px) {
+ 
+    .div_container{
+        
+        height: 80vh;
+    }
+    .form_box{
+       
+        align-items: center;
+       margin-bottom: -10rem;
+    }
+    .container_form{
+        margin: auto;
+    }
+    .submit{
+        
+        padding: 1rem;
+        word-break: break-all;
+        width: max-content;
+
+    }
+}
+
+@media screen and (max-width: 720px){
+
+    .container_form{
+        border-radius: 2%;
+        margin: auto;
+    }
+    .form{
+        align-items: center;
+        width: max-content;
+    }
+
+    .form_field::placeholder{
+        font-size: 1.3rem;
+    }
+    .Select{
+        font-size: 1.3rem;
+        padding: 0.4rem;
+    }
 }
