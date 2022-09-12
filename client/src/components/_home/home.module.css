@@ -23,8 +23,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
    /*  margin-left: 30px; */
-  
+   padding-left: 30px;
 }
 .last_operation{  
     height: max-content;
@@ -39,6 +40,7 @@
 }
 
 .last_ten_operations{
+
     height: 24rem;
     width: 90rem;
      color: black;
@@ -52,9 +54,7 @@
     -moz-box-shadow: -2px 1px 9px 9px rgba(142,154,175,0.87);
    z-index: 1;
    padding: 10px;
-  /*   margin-left: 30px;
-    margin-top: 40px; 
-    margin-bottom: -60px; */
+   margin-left: 40px;
     
 }
 
@@ -65,8 +65,8 @@
         
     }
  .wallet{
-        margin-top: 10rem; 
-        
+        margin-top:10rem; 
+        padding-left: 0px;
     }
     .last_operation{
         margin-top: 10rem;
@@ -82,6 +82,7 @@
 }
 @media screen and (max-width: 1440px) {
     .wallet{
+        margin-top: 11.4rem;
         margin-bottom: -8rem;
         
     }
@@ -94,20 +95,20 @@
 @media screen and (max-width: 920px) {
  
     .last_ten_operations{
-   
-      margin-top: 0px;
-      margin-bottom: 0px;
+      
+        margin:  10px 30px 30px 30px;
     }
 
 }
-@media screen and (max-width: 720px){
+@media screen and (max-width:810px ) {
     .wallet{
-        margin-bottom: -9rem;
-        
-    }   
+        margin-top: 3rem;
+
+    }
+}
+@media screen and (max-width: 720px){
     .last_ten_operations{
-        
-        max-width: 640px;
+        margin: 0rem;
     }
 
 }
