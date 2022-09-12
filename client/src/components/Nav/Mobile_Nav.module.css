@@ -8,6 +8,10 @@ box-shadow:  -4px -4px 24px 9px rgba(30,150,252,0.17);
 -webkit-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
 -moz-box-shadow: -4px -4px 24px 9px rgba(30,150,252,0.17);
 width: 100%;
+font-size: 14px;
+
+font-family: 'Montserrat', sans-serif;
+font-weight: 300;
 }
 .user_nav{
  

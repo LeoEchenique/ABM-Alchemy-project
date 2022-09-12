@@ -153,13 +153,16 @@ font-weight:  300;
 @media screen and (max-width:920px) {
  
     .div_container{
-        
+    
         height: 80vh;
+        
     }
     .form_box{
        
         align-items: center;
-       margin-bottom: -10rem;
+       margin-top: 5rem;
+       z-index: 0;
+       height: 80vh;
     }
     .container_form{
         margin: auto;
@@ -171,17 +174,32 @@ font-weight:  300;
         width: max-content;
 
     }
+    .Select{
+        font-size: 1.3rem;
+        padding: 0.4rem;
+    }
 }
-
+@media screen and (max-width: 810px) {
+    .nav_container{
+    position: fixed;
+    width: 100%;
+    height: max-content;
+    z-index: 1;
+    }
+}
 @media screen and (max-width: 720px){
 
     .container_form{
+    
         border-radius: 2%;
         margin: auto;
+        
     }
     .form{
+        
         align-items: center;
         width: max-content;
+        
     }
 
     .form_field::placeholder{
@@ -189,6 +207,16 @@ font-weight:  300;
     }
     .Select{
         font-size: 1.3rem;
+        padding: 0.4rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .form_box{
+        height: 80vh;
+    }
+    .Select{
+        font-size: 1rem;
         padding: 0.4rem;
     }
 }

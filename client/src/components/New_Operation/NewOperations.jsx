@@ -68,7 +68,10 @@ export default function NewOperation() {
   }
   return (
     <div className={style.div_container}>
+      <div className={style.nav_container}>
+
       <Nav />
+      </div>
       {swali === true ? 
         fireSwal()
         : null}
@@ -95,7 +98,7 @@ export default function NewOperation() {
               <option defaultValue={updateOp.Type}>{updateOp.Type}</option>
             </select>
             <input type="number" placeholder={updateOp.Mount} name="Mount"   className={style.form_field}/>
-            <input type="submit" value="Update your operation" className={style.submit}/>
+            <input type="submit" value="Submit" className={style.submit}/>
             </div>
       
           </div>

@@ -96,9 +96,9 @@ transform: rotate(360deg);
     .operation{
         height: 40px;
         width: max-content;
-        border-bottom: 2px solid rgb(32, 78, 185);
+        /* border-bottom: 2px solid rgb(32, 78, 185); */
         
-        padding: 1rem;
+        padding: 2rem;
     }
     .div_container h3{
         width: 5.4rem;
