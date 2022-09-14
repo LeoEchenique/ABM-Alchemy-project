@@ -14,7 +14,7 @@
 .err {
   font-size: 16px;
   color: rgb(226, 82, 82);
-  margin-top: -20px;
+  margin-top: -30px;
 }
 .sign {
   height: 100vh;
@@ -88,6 +88,9 @@
   }
   .log_title {
     text-align: center;
+  }
+  .err{
+    margin-top: 0px;
   }
 }
 @media screen and (max-width: 470px) {
