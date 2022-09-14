@@ -2,7 +2,6 @@
 import React from "react";
 import Nav from "../Nav/Nav";
 import style from "./NewOperation.module.css";
-import Modal from "../modal/modal.jsx"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";

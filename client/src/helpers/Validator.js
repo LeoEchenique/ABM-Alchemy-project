@@ -1,6 +1,5 @@
 export const validator = (form, key) => {
     let success = false;
-
     if (key === "log_in") {
         let err = {
             email: "Email not provided",
@@ -21,7 +20,6 @@ export const validator = (form, key) => {
         if (success === false) return err;
         else return success;
     }
-
     if (key === "operation") {
         let err = {
             reason: "Reason is required",

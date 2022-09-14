@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize, HasMany, BelongsTo, BelongsToMany } = require('sequelize');
+const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 
@@ -33,7 +33,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 
 // relational models
-const { Wallet, Operation, User } = sequelize.models;     /* HERE THE MODELS TO INJECT THE CONECTION */
+const { Wallet, Operation, User } = sequelize.models;
 
 
 User.belongsTo(Wallet);

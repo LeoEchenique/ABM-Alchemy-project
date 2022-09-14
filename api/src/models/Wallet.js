@@ -1,24 +1,20 @@
-
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-
-
-    sequelize.define("Wallet", {
-
-        Id: {
-            type: DataTypes.INTEGER(),
-            unique: true,
-            primaryKey: true,
-            autoIncrement: true
+    sequelize.define(
+        "Wallet",
+        {
+            Id: {
+                type: DataTypes.INTEGER(),
+                unique: true,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            Funds: {
+                type: DataTypes.INTEGER,
+                defaultValue: 0,
+            },
         },
-        Funds: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-        },
-
-
-
-
-    }, { timestamps: false })
-}
+        { timestamps: false }
+    );
+};

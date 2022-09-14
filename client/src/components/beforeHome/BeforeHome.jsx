@@ -10,7 +10,7 @@ export default function BeforeHome() {
   const [swali, setSwali] = useState(false);
   const [err, setErr] = useState({});
   const formRef = useRef();
-  // sign in button activates a local state to true, then the render of the fign form changes.
+  // sign in button activates a local state to true, then the render of the sign form changes.
   const [form, setForm] = useState({
     Name: "",
     Email: "",
@@ -24,10 +24,9 @@ export default function BeforeHome() {
       Email: "",
       Password: "",
     });
-    console.log(formRef)
+    console.log(formRef);
     formRef.current.reset();
-    setErr({})
-
+    setErr({});
   };
   const handleChange = (e) => {
     setForm((values) => ({ ...values, [e.target.name]: e.target.value }));
@@ -36,10 +35,6 @@ export default function BeforeHome() {
   const createUser = async (e) => {
     // if register
     e.preventDefault();
-
-    // pass the post to a validator function to see if all is ok
-
-    // si tiene token: se guarda en la localStorage y se hace el pase a home.
     let validate = validator(form, "sign_in");
 
     if (validate === true) {
@@ -54,10 +49,10 @@ export default function BeforeHome() {
         }
       } catch (error) {
         alert(error.response.data);
- 
+
         setLog(false);
       }
-    } else setErr(validate); // done, missing styles for errors.
+    } else setErr(validate); 
   };
   const handleLog = async (e) => {
     // if log in..
@@ -72,7 +67,7 @@ export default function BeforeHome() {
         }
       } catch (error) {
         alert(error.response.data); // here sweetAlert saying that user doesnt exist or an error ocurred with the data provided
-  
+
         setLog(true);
       }
     } else setErr(validate);
@@ -89,128 +84,122 @@ export default function BeforeHome() {
     });
   };
 
-  
   return (
     <div className={style.div_container}>
       {swali === true ? fireSwal() : null}
       {log === false ? (
-       
-          <div className={style.sign}>
-            <h2 className={style.log_t}>Time for some budget management? </h2>
-            <form
-              ref={formRef}
-              onChange={(e) => handleChange(e)}
-              onSubmit={handleLog}
-              className={style.form}
-            >
-              <label className={style.label} htmlFor="email">
-                Email:
-              </label>
-              <input
-                
-                className={style.input}
-                placeholder="Email..."
-                type="text"
-                id="email"
-                name="Email"
-                value={form.Email}
-              />
-              {err?.email?.length ? (
-                <span className={style.err}>{err.email}</span>
-              ) : null}
-              <label className={style.label} htmlFor="pass">
+        <div className={style.sign}>
+          <h2 className={style.log_t}>Time for some budget management? </h2>
+          <form
+            ref={formRef}
+            onChange={(e) => handleChange(e)}
+            onSubmit={handleLog}
+            className={style.form}
+          >
+            <label className={style.label} htmlFor="email">
+              Email:
+            </label>
+            <input
+              className={style.input}
+              placeholder="Email..."
+              type="text"
+              id="email"
+              name="Email"
+              value={form.Email}
+            />
+            {err?.email?.length ? (
+              <span className={style.err}>{err.email}</span>
+            ) : null}
+            <label className={style.label} htmlFor="pass">
               Password:
-              </label>
-              <input
-                className={style.input}
-                placeholder="Password..."
-                type="password"
-                id="pass"
-                name="Password"
-                value={form.Password}
-              />
-                    {err?.password?.length ? (
-                <span className={style.err}>{err.password}</span>
-              ) : null}
-              <input
-                type="submit"
-                className={style.log_button}
-                value="Log in!"
-              />
-            </form>
-            <span>Or..</span>
-            <h3 className={style.log_button} onClick={handleClick}>
-              {" "}
-              Sign in
-            </h3>
-          </div>
-     
+            </label>
+            <input
+              className={style.input}
+              placeholder="Password..."
+              type="password"
+              id="pass"
+              name="Password"
+              value={form.Password}
+            />
+            {err?.password?.length ? (
+              <span className={style.err}>{err.password}</span>
+            ) : null}
+            <input type="submit" className={style.log_button} value="Log in!" />
+          </form>
+          <span>Or..</span>
+          <h3 className={style.log_button} onClick={handleClick}>
+            {" "}
+            Sign in
+          </h3>
+        </div>
       ) : (
-        
-          <div className={style.sign}>
-            <h2  className={style.log_t}>An easy step for you to get started.. </h2>
-              <form
-                  ref={formRef}
-              onChange={(e) => handleChange(e)}
-              onSubmit={createUser}
-              className={style.form}
-            >
-              <label className={style.label} htmlFor="email">
+        <div className={style.sign}>
+          <h2 className={style.log_t}>
+            An easy step for you to get started..{" "}
+          </h2>
+          <form
+            ref={formRef}
+            onChange={(e) => handleChange(e)}
+            onSubmit={createUser}
+            className={style.form}
+          >
+            <label className={style.label} htmlFor="email">
+              Email:
+            </label>
 
-                Email:
-                </label>
-       
-              <input
-                className={style.input}
-                placeholder="Email..."
-                type="text"
-                id="email"
-                  name="Email"
-                  value={form.Email}
-                />
-                         {err?.email?.length ? (
-                <span className={style.err}>{err.email}</span>
-              ) : null}
-              <label className={style.label} htmlFor="email">
-                Name:
-                </label>
-        
-                <input
-                className={style.input}
-                placeholder="Name..."
-                type="text"
-                id="name"
-                  name="Name"
-                  value={form.Name}
-              />
-                   {err?.name?.length ? (
-                <span className={style.err}>{err.name}</span>
-              ) : null}
-              <label className={style.label} htmlFor="pass">
-                Password: 
-                </label>
-              
-              <input
-                className={style.input}
-                placeholder="Password..."
-                type="password"
-                id="pass"
-                  name="Password"
-                  value={form.Password}
-                />
-                  {err?.password?.length ? (
-                <span className={style.err}>{err.password}</span>
-              ) : null}
-              <input
-                type="submit"
-                className={style.log_button}
-                value="Register now!"
-              />
-            </form>
-            <span>Or..</span>
-              <h3  className={style.log_button} onClick={handleClick}> Log in  </h3>
-          </div>
+            <input
+              className={style.input}
+              placeholder="Email..."
+              type="text"
+              id="email"
+              name="Email"
+              value={form.Email}
+            />
+            {err?.email?.length ? (
+              <span className={style.err}>{err.email}</span>
+            ) : null}
+            <label className={style.label} htmlFor="email">
+              Name:
+            </label>
 
+            <input
+              className={style.input}
+              placeholder="Name..."
+              type="text"
+              id="name"
+              name="Name"
+              value={form.Name}
+            />
+            {err?.name?.length ? (
+              <span className={style.err}>{err.name}</span>
+            ) : null}
+            <label className={style.label} htmlFor="pass">
+              Password:
+            </label>
+
+            <input
+              className={style.input}
+              placeholder="Password..."
+              type="password"
+              id="pass"
+              name="Password"
+              value={form.Password}
+            />
+            {err?.password?.length ? (
+              <span className={style.err}>{err.password}</span>
+            ) : null}
+            <input
+              type="submit"
+              className={style.log_button}
+              value="Register now!"
+            />
+          </form>
+          <span>Or..</span>
+          <h3 className={style.log_button} onClick={handleClick}>
+            {" "}
+            Log in{" "}
+          </h3>
+        </div>
       )}
     </div>
   );
