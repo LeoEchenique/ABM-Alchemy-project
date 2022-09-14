@@ -22,7 +22,7 @@ export default function Last_operation() {
 
   return (
     <div className={style.div_container}>
-      <h2>Last operation</h2>
+      <h1>Last operation</h1>
       {operation ? (
         <div className={style.operation}>
           <img src={icon} alt="" />

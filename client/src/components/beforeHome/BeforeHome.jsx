@@ -52,7 +52,7 @@ export default function BeforeHome() {
 
         setLog(false);
       }
-    } else setErr(validate); 
+    } else setErr(validate);
   };
   const handleLog = async (e) => {
     // if log in..

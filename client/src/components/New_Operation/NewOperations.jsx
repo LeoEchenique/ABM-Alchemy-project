@@ -8,11 +8,10 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { validator } from "../../helpers/Validator";
 export default function NewOperation() {
-
   let { id } = useParams();
   let user = JSON.parse(localStorage.getItem("user"));
   const [updateOp, setUpdateOp] = useState(null);
-  const [err, setErr]= useState({})
+  const [err, setErr] = useState({});
   const [swali, setSwali] = useState(false);
   const [form, setForm] = useState({
     Reason: "",
@@ -26,14 +25,13 @@ export default function NewOperation() {
       let operation = await axios.get(`http://localhost:3001/Operations/${id}`);
       setUpdateOp(operation.data);
       setForm({
-        ...form, 
+        ...form,
         Type: operation.data.Type,
-      })
+      });
     }
   };
   useEffect(() => {
     getOp();
-
   }, []);
 
   const handleChange = (e) => {
@@ -45,29 +43,27 @@ export default function NewOperation() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     let success = validator(form, "operation");
 
     if (updateOp !== null) {
-     
       if (success === true) {
         await axios
           .put(`http://localhost:3001/Operations/UpDate/${updateOp.Id}`, form)
           .then(() => {
             setSwali(true);
-          })
+          });
         return;
-      } 
+      }
     }
     if (success === true) {
       await axios
-      .post("http://localhost:3001/Operations/New", form)
-      .then(() => setSwali(true))
-      .catch((err) => alert(err.response.data));
-    }else { 
-      return setErr(success); 
-    } 
-   
+        .post("http://localhost:3001/Operations/New", form)
+        .then(() => setSwali(true))
+        .catch((err) => alert(err.response.data));
+    } else {
+      return setErr(success);
+    }
   };
   const fireSwal = () => {
     Swal.fire({
@@ -104,9 +100,9 @@ export default function NewOperation() {
                 name="Reason"
                 id="Reason"
               />
-             {err?.reason?.length ? (
-              <span className={style.err}>{err.reason}</span>
-            ) : null} 
+              {err?.reason?.length ? (
+                <span className={style.err}>{err.reason}</span>
+              ) : null}
               <label htmlFor="Type" className={style.form__label}>
                 Operation type:
               </label>
@@ -122,9 +118,9 @@ export default function NewOperation() {
                 name="Mount"
                 className={style.form_field}
               />
-                {err?.amount?.length ? (
-              <span className={style.err}>{err.amount}</span>
-            ) : null} 
+              {err?.amount?.length ? (
+                <span className={style.err}>{err.amount}</span>
+              ) : null}
               <input type="submit" value="Submit" className={style.submit} />
             </div>
           </div>
@@ -148,9 +144,9 @@ export default function NewOperation() {
                 id="reason"
                 name="Reason"
               />
-            {err?.reason?.length ? (
-              <span className={style.err}>{err.reason}</span>
-            ) : null} 
+              {err?.reason?.length ? (
+                <span className={style.err}>{err.reason}</span>
+              ) : null}
               <label htmlFor="Type">Operation type: </label>
               <select
                 id="Select"
@@ -163,8 +159,8 @@ export default function NewOperation() {
                 <option className={style.option}>Expense</option>
               </select>
               {err?.type?.length ? (
-              <span className={style.err}>{err.type}</span>
-            ) : null} 
+                <span className={style.err}>{err.type}</span>
+              ) : null}
               <label htmlFor="Mount">Amount: </label>
               <input
                 className={style.form_field}
@@ -173,9 +169,9 @@ export default function NewOperation() {
                 id="Amount"
                 name="Mount"
               />
- {err?.amount?.length ? (
-              <span className={style.err}>{err.amount}</span>
-            ) : null} 
+              {err?.amount?.length ? (
+                <span className={style.err}>{err.amount}</span>
+              ) : null}
               <input type="submit" value="Submit" className={style.submit} />
             </div>
           </div>
