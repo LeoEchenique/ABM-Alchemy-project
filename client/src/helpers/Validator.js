@@ -21,11 +21,26 @@ export const validator = (form, key) => {
         else return success;
     }
     if (key === "operation") {
+        console.log("form", form)
         let err = {
             reason: "Reason is required",
             type: "Type of operation required",
-            amount: "You need to specify an amount",
+            amount: "You need to specify the amount",
         };
+        if (form.Reason.length > 0) err.reason = "";
+        if (form.Type.length && (form.Type !== "Select" && form.Type !== "Type")) err.type = "";
+        if (form.Mount === 0 || form.Mount >= 100000)
+            err.amount = "You can't do that";
+        if (form.Mount.toString().length) err.amount = "";
+        !err.reason && !err.type && !err.amount
+            ? (success = true)
+            : (success = false);
+        if (success === true) return success
+
+        else {
+            console.log(err)
+            return err;
+        }
     }
 
     if (key === "sign_in") {
