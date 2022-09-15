@@ -6,4 +6,3 @@ Having a direction for "what to do" in this early stages of mine fulls me all th
 This is an ABM project for Alkemy which simulate the management of a wallet to keep track of operations such as "Income" or "Expenses" made it for a fictional purpose.
 
 
-For run this code just open up the intuitive folders (api and client) and type "npm start" on two separated terminals, hope you like it!
