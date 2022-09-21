@@ -30,7 +30,7 @@ export default function LatestOperation({ currentBalance }) {
   return (
     <div className={style.div_container}>
       <div>
-        <h2>Latest operations</h2>
+        <h1>Latest operations</h1>
       </div>
       <div>
         <div className={style.operation_row}>
